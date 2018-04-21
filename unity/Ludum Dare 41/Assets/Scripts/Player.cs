@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
   void Start()
   {
     typeWriter_.RegisterWord("jump", Jump);
-    typeWriter_.RegisterWord("switch", SwitchDirection);
+    typeWriter_.RegisterWord("turn", SwitchDirection);
   }
 
   private void SwitchDirection(string word)
