@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
   public float wobbleHeight;
   public float attackStepSize;
   public Vector3 offset;
+  public GameObject explosionPrefab;
 
   private State state_;
   private Player target_;
@@ -90,6 +91,16 @@ public class Enemy : MonoBehaviour
     transform.localScale = s;
 
     transform.rotation = Quaternion.Euler(0.0f, 0.0f, angle * Mathf.Rad2Deg);
+  }
+
+  public void Kill()
+  {
+    Destroy(gameObject);
+
+    if (explosionPrefab != null)
+    {
+      Instantiate(explosionPrefab, transform.position, Quaternion.identity, null);
+    }
   }
 
   void Update()

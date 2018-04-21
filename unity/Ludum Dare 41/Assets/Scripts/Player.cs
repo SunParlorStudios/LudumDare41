@@ -130,7 +130,7 @@ public class Player : MonoBehaviour
     }
     else
     {
-      Destroy(lockedOn_.gameObject);
+      lockedOn_.Kill();
       lockedOn_ = null;
       reticle.SetTarget(null);
     }
