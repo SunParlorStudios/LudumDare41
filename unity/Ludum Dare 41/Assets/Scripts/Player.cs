@@ -46,6 +46,11 @@ public class Player : MonoBehaviour
     typeWriter_.RegisterWord("shoot", OnWord);
   }
 
+  public Direction GetDirection()
+  {
+    return direction_;
+  }
+
   void OnWord(string word)
   {
     switch (word)
