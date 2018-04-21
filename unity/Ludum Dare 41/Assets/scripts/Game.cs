@@ -14,7 +14,7 @@ public class Game : MonoBehaviour
 {
   public Countdown countdown;
   public bool skipIntro = false;
-
+  
   public GameState state
   {
     get
@@ -26,10 +26,15 @@ public class Game : MonoBehaviour
   private GameState state_;
   private FollowCamera followCamera_;
   private OverviewCamera overviewCamera_;
+  private Player player_;
+  private TypeWriter typeWriter_;
 
   void Awake()
   {
     GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
+
+    player_ = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+    typeWriter_ = player_.GetComponent<TypeWriter>();
 
     followCamera_ = camera.GetComponent<FollowCamera>();
     overviewCamera_ = camera.GetComponent<OverviewCamera>();
@@ -49,6 +54,7 @@ public class Game : MonoBehaviour
       followCamera_.enabled = true;
       overviewCamera_.enabled = false;
       countdown.enabled = false;
+      typeWriter_.allowInput = true;
     }
   }
 
@@ -64,6 +70,7 @@ public class Game : MonoBehaviour
           overviewCamera_.Skip();
           countdown.Skip();
           followCamera_.enabled = true;
+          typeWriter_.allowInput = true;
         }
         break;
     }
@@ -82,5 +89,6 @@ public class Game : MonoBehaviour
   void CountdownFinishedListener()
   {
     state_ = GameState.Game;
+    typeWriter_.allowInput = true;
   }
 }

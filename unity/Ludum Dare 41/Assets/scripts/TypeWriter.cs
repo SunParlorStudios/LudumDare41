@@ -12,6 +12,8 @@ public class TypeWriter : MonoBehaviour
   public NewCharacterListener newCharacterEvent;
   public WordListener anyWordCompletedEvent;
 
+  public bool allowInput = false;
+
   public string currentInput
   {
     get
@@ -31,57 +33,60 @@ public class TypeWriter : MonoBehaviour
 
   void Update()
   {
-    foreach (char c in Input.inputString)
+    if (allowInput)
     {
-      string preInput = currentInput_;
-      if (c == '\b')
+      foreach (char c in Input.inputString)
       {
-        if (currentInput_.Length != 0)
+        string preInput = currentInput_;
+        if (c == '\b')
         {
-          currentInput_ = currentInput_.Remove(currentInput_.Length - 1, 1);
-        }
-      }
-      else
-      {
-        currentInput_ += c;
-
-        bool foundMatchingWord = false;
-        foreach (KeyValuePair<string, WordListener> entry in words_)
-        {
-          if (entry.Key.Substring(0, Mathf.Clamp(currentInput_.Length, 0, entry.Key.Length)) == currentInput_)
+          if (currentInput_.Length != 0)
           {
-            foundMatchingWord = true;
-            break;
+            currentInput_ = currentInput_.Remove(currentInput_.Length - 1, 1);
           }
-        }
-
-        if (!foundMatchingWord)
-        {
-          if (resetEvent != null)
-          {
-            resetEvent.Invoke(currentInput_);
-          }
-
-          currentInput_ = "";
         }
         else
         {
-          if (words_.ContainsKey(currentInput_))
+          currentInput_ += c;
+
+          bool foundMatchingWord = false;
+          foreach (KeyValuePair<string, WordListener> entry in words_)
           {
-            if (anyWordCompletedEvent != null)
+            if (entry.Key.Substring(0, Mathf.Clamp(currentInput_.Length, 0, entry.Key.Length)) == currentInput_)
             {
-              anyWordCompletedEvent.Invoke(currentInput_);
+              foundMatchingWord = true;
+              break;
+            }
+          }
+
+          if (!foundMatchingWord)
+          {
+            if (resetEvent != null)
+            {
+              resetEvent.Invoke(currentInput_);
             }
 
-            words_[currentInput_].Invoke(currentInput_);
             currentInput_ = "";
           }
-        }
-      }
+          else
+          {
+            if (words_.ContainsKey(currentInput_))
+            {
+              if (anyWordCompletedEvent != null)
+              {
+                anyWordCompletedEvent.Invoke(currentInput_);
+              }
 
-      if (newCharacterEvent != null)
-      {
-        newCharacterEvent.Invoke(c, preInput, currentInput_);
+              words_[currentInput_].Invoke(currentInput_);
+              currentInput_ = "";
+            }
+          }
+        }
+
+        if (newCharacterEvent != null)
+        {
+          newCharacterEvent.Invoke(c, preInput, currentInput_);
+        }
       }
     }
   }
