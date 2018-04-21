@@ -547,11 +547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03a7b759008db6c418bfe7face10dd7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overviewPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  overviewPoints: []
   pointToPointDuration: 1
   cooldownDuration: 0.5
 --- !u!114 &114376484235875858
