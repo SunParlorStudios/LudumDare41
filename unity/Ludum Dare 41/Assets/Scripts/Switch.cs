@@ -72,8 +72,6 @@ public class Switch : MonoBehaviour
 
     state_ = newState;
     animator_.SetInteger("State", (int)newState);
-
-    Debug.Log("Switch to " + state_);
   }
 
   public void Toggle(bool notifyListeners = true)
