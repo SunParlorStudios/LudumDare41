@@ -91,4 +91,10 @@ public class Game : MonoBehaviour
     state_ = GameState.Game;
     typeWriter_.allowInput = true;
   }
+
+  public void CompleteLevel()
+  {
+    state_ = GameState.PostGame;
+    typeWriter_.allowInput = false;
+  }
 }
