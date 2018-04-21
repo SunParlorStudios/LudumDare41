@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
   public float wobbleSpeed;
   public float wobbleHeight;
   public float attackStepSize;
+  public float attackRange;
+
   public Vector3 offset;
   public GameObject explosionPrefab;
 
@@ -40,6 +42,11 @@ public class Enemy : MonoBehaviour
 
   private bool ShouldAttack()
   {
+    if (target_.alive == false)
+    {
+      return false;
+    }
+
     Vector2 p1 = transform.position;
     Vector2 p2 = target_.transform.position;
 
@@ -78,6 +85,14 @@ public class Enemy : MonoBehaviour
     transform.position = Vector3.Lerp(transform.position, p2, attackStepSize);
 
     Vector3 d = p2 - transform.position;
+
+    if (d.magnitude < attackRange)
+    {
+      target_.Kill();
+      state_ = State.kHovering;
+      current_ = transform.position;
+    }
+
     float angle = Mathf.Atan2(d.y, d.x);
 
     float sy = 1.0f;
