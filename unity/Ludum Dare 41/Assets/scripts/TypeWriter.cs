@@ -10,6 +10,7 @@ public class TypeWriter : MonoBehaviour
 
     public ResetListener resetEvent;
     public NewCharacterListener newCharacterEvent;
+    public WordListener anyWordCompletedEvent;
 
     public string currentInput
     {
@@ -67,6 +68,11 @@ public class TypeWriter : MonoBehaviour
                 {
                     if (words_.ContainsKey(currentInput_))
                     {
+                        if (anyWordCompletedEvent != null)
+                        {
+                            anyWordCompletedEvent.Invoke(currentInput_);
+                        }
+
                         words_[currentInput_].Invoke(currentInput_);
                         currentInput_ = "";
                     }

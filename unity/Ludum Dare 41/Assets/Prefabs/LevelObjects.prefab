@@ -525,6 +525,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   writer: {fileID: 114794577131315242}
+  wordCompletionEffect: {fileID: 1687631361411796, guid: 03773ac4aaf4e934aa1927001d711f85,
+    type: 2}
 --- !u!114 &114749798489534566
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -583,7 +585,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
