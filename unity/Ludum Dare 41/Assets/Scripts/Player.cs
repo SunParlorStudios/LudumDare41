@@ -36,13 +36,33 @@ public class Player : MonoBehaviour
 
   void Start()
   {
-    typeWriter_.RegisterWord("jump", Jump);
-    typeWriter_.RegisterWord("turn", SwitchDirection);
-    typeWriter_.RegisterWord("lock", LockOn);
-    typeWriter_.RegisterWord("shoot", Shoot);
+    typeWriter_.RegisterWord("jump", OnWord);
+    typeWriter_.RegisterWord("turn", OnWord);
+    typeWriter_.RegisterWord("shoot", OnWord);
   }
 
-  private void SwitchDirection(string word)
+  void OnWord(string word)
+  {
+    switch (word)
+    {
+      case "jump":
+        Jump();
+        break;
+
+      case "turn":
+        SwitchDirection();
+        break;
+
+      case "shoot":
+        Shoot();
+        break;
+
+      default:
+        break;
+    }
+  }
+
+  private void SwitchDirection()
   {
     direction_ = direction_ == Direction.kLeft ? Direction.kRight : Direction.kLeft;
 
@@ -52,7 +72,7 @@ public class Player : MonoBehaviour
     transform.localScale = scale;
   }
 
-  private void LockOn(string word)
+  private void LockOn()
   {
     GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
@@ -82,7 +102,7 @@ public class Player : MonoBehaviour
     reticle.SetTarget(null);
   }
 
-  private void Shoot(string word)
+  private void Shoot()
   {
     if (lockedOn_ == null)
     {
@@ -134,7 +154,7 @@ public class Player : MonoBehaviour
     return grounded;
   }
 
-  private void Jump(string word)
+  private void Jump()
   {
     if (grounded_ == false)
     {
@@ -195,5 +215,6 @@ public class Player : MonoBehaviour
   void Update()
   {
     grounded_ = CheckGrounded();
+    LockOn();
   }
 }

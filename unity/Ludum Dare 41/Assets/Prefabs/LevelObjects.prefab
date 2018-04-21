@@ -479,11 +479,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba8791ff69b5f04f8c218ebfa488cef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 1500
-  maxSpeed: 10
+  acceleration: 2000
+  maxSpeed: 7
   jumpForce: 800
   jumpCheckRay: 0.75
-  lockRange: 10
+  lockRange: 15
   laserPrefab: {fileID: 1032154859653546, guid: 7a6885d3d3f0bcc44af819526cc52c9a,
     type: 2}
   reticle: {fileID: 114608397442170422}
@@ -563,7 +563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 420
-  moveStepSize: 0.55
+  moveStepSize: 0.33
   canvas: {fileID: 223438052155806796}
 --- !u!114 &114693185057614880
 MonoBehaviour:
