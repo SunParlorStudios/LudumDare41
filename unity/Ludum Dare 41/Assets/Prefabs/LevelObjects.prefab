@@ -1116,6 +1116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countdown: {fileID: 114061478643875186}
+  skipIntro: 0
 --- !u!114 &114693185057614880
 MonoBehaviour:
   m_ObjectHideFlags: 1

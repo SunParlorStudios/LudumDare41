@@ -13,6 +13,7 @@ public enum GameState
 public class Game : MonoBehaviour
 {
   public Countdown countdown;
+  public bool skipIntro = false;
 
   public GameState state
   {
@@ -28,12 +29,12 @@ public class Game : MonoBehaviour
 
   void Awake()
   {
-    state_ = GameState.LevelOverview;
-
     GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
 
     followCamera_ = camera.GetComponent<FollowCamera>();
     overviewCamera_ = camera.GetComponent<OverviewCamera>();
+    
+    state_ = GameState.LevelOverview;
 
     followCamera_.enabled = false;
     overviewCamera_.enabled = true;
@@ -41,11 +42,31 @@ public class Game : MonoBehaviour
 
     overviewCamera_.OverviewFinishedEvent += OverviewFinishedListener;
     countdown.CountdownFinishedEvent += CountdownFinishedListener;
+
+    if (skipIntro)
+    {
+      state_ = GameState.Game;
+      followCamera_.enabled = true;
+      overviewCamera_.enabled = false;
+      countdown.enabled = false;
+    }
   }
 
   void Update()
   {
-    
+    switch (state_)
+    {
+      case GameState.LevelOverview:
+      case GameState.Countdown:
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+          state_ = GameState.Game;
+          overviewCamera_.Skip();
+          countdown.Skip();
+          followCamera_.enabled = true;
+        }
+        break;
+    }
   }
 
   void OverviewFinishedListener()
