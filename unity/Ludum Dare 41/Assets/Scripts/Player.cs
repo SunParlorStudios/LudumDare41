@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
   public float acceleration;
   public float maxSpeed;
   public float jumpForce;
+  public float jumpCheckRay;
 
   private Direction direction_;
   private Rigidbody2D rigidBody_;
@@ -32,7 +33,19 @@ public class Player : MonoBehaviour
 
   private bool CheckGrounded()
   {
-    return true;
+    bool grounded = false;
+    if (Physics2D.Raycast(transform.position, Vector2.down, jumpCheckRay) == true)
+    {
+      if (Vector3.Dot(rigidBody_.velocity, Vector3.up) <= 0.0f)
+      {
+        grounded =  true;
+      }
+    }
+
+    Debug.DrawLine(transform.position, transform.position + Vector3.down * jumpCheckRay,
+      grounded == true ? Color.green : Color.red);
+
+    return grounded;
   }
 
   private void Jump()
