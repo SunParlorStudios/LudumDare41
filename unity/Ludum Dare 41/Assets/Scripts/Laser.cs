@@ -8,7 +8,7 @@ public class Laser : MonoBehaviour
 
   private float timer_;
 
-	void Update()
+  void Update()
   {
     timer_ += Time.deltaTime;
 
@@ -25,5 +25,5 @@ public class Laser : MonoBehaviour
     s.y = 0.0f;
 
     transform.localScale = Vector3.Lerp(transform.localScale, s, r);
-	}
+  }
 }

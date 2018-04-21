@@ -25,9 +25,9 @@ public class Player : MonoBehaviour
 
   private bool grounded_;
 
-	void Awake()
+  void Awake()
   {
-		direction_ = Direction.kRight;
+    direction_ = Direction.kRight;
     rigidBody_ = GetComponent<Rigidbody2D>();
     typeWriter_ = GetComponent<TypeWriter>();
     lockedOn_ = null;
@@ -86,7 +86,7 @@ public class Player : MonoBehaviour
     Vector3 d = lockedOn_.transform.position - transform.position;
 
     RaycastHit2D hit = Physics2D.Raycast(transform.position, d.normalized, d.magnitude);
-    
+
     if (hit == true)
     {
       Vector2 p1 = transform.position;
@@ -146,11 +146,11 @@ public class Player : MonoBehaviour
     {
       case Direction.kLeft:
         force = Vector3.left;
-      break;
+        break;
 
       case Direction.kRight:
         force = Vector3.right;
-      break;
+        break;
     }
 
     force *= acceleration * Time.fixedDeltaTime;
@@ -173,7 +173,7 @@ public class Player : MonoBehaviour
 
     rigidBody_.velocity = v;
   }
-  
+
   void FixedUpdate()
   {
     if (rigidBody_ == null)

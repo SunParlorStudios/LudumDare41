@@ -6,56 +6,56 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Text))]
 public class WordVisualizer : MonoBehaviour
 {
-    public TypeWriter writer;
+  public TypeWriter writer;
 
-    public GameObject wordSuccessEffect;
-    public GameObject wordFailEffect;
+  public GameObject wordSuccessEffect;
+  public GameObject wordFailEffect;
 
-    private Text text;
+  private Text text;
 
-	void Start ()
+  void Start()
+  {
+    if (!writer)
     {
-		if (!writer)
-        {
-            enabled = false;
-        }
-        else
-        {
-            text = GetComponent<Text>();
-            writer.newCharacterEvent += NewCharacterReceiver;
-
-            writer.anyWordCompletedEvent += WordSuccessReceiver;
-            writer.resetEvent += WordFailReceiver;
-        }
+      enabled = false;
     }
+    else
+    {
+      text = GetComponent<Text>();
+      writer.newCharacterEvent += NewCharacterReceiver;
 
-    void WordSuccessReceiver(string word)
-    {
-        if (wordSuccessEffect != null)
-        {
-            GameObject effect = Instantiate(wordSuccessEffect, transform.parent);
-            effect.transform.position = transform.position;
-            effect.GetComponent<Text>().text = word;
-        }
+      writer.anyWordCompletedEvent += WordSuccessReceiver;
+      writer.resetEvent += WordFailReceiver;
     }
+  }
 
-    void WordFailReceiver(string word)
+  void WordSuccessReceiver(string word)
+  {
+    if (wordSuccessEffect != null)
     {
-        if (wordFailEffect != null)
-        {
-            GameObject effect = Instantiate(wordFailEffect, transform.parent);
-            effect.transform.position = transform.position;
-            effect.GetComponent<Text>().text = word;
-        }
+      GameObject effect = Instantiate(wordSuccessEffect, transform.parent);
+      effect.transform.position = transform.position;
+      effect.GetComponent<Text>().text = word;
     }
+  }
 
-    void NewCharacterReceiver(char c, string preInput, string postInput)
+  void WordFailReceiver(string word)
+  {
+    if (wordFailEffect != null)
     {
-        text.text = postInput;
+      GameObject effect = Instantiate(wordFailEffect, transform.parent);
+      effect.transform.position = transform.position;
+      effect.GetComponent<Text>().text = word;
     }
-	
-	void Update ()
-    {
-		
-	}
+  }
+
+  void NewCharacterReceiver(char c, string preInput, string postInput)
+  {
+    text.text = postInput;
+  }
+
+  void Update()
+  {
+
+  }
 }
