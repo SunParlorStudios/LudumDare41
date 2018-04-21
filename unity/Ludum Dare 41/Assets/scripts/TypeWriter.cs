@@ -37,9 +37,14 @@ public class TypeWriter : MonoBehaviour
             else
             {
                 currentInput_ += c;
-            }
 
-            Debug.Log(currentInput_);
+                if (words_.ContainsKey(currentInput_))
+                {
+                    words_[currentInput_].Invoke(currentInput_);
+
+                    currentInput_ = "";
+                }
+            }
         }
     }
 
