@@ -23,10 +23,21 @@ public class OverviewCamera : MonoBehaviour
     currentPoint_ = 0;
     animationTime_ = 0.0f;
 
-    if (overviewPoints.Count == 0)
+    for (int i = 0; i < overviewPoints.Count; i++)
     {
-      enabled = false;
-      OverviewFinishedEvent.Invoke();
+      if (overviewPoints[i] == null)
+      {
+        Debug.LogWarning("An overview point is set to null. Overview state will be skipped.");
+
+        enabled = false;
+
+        if (OverviewFinishedEvent != null)
+        {
+          OverviewFinishedEvent.Invoke();
+        }
+
+        break;
+      }
     }
 	}
 	
