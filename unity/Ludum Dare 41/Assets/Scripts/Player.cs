@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D), typeof(TypeWriter))]
 public class Player : MonoBehaviour
 {
   public enum Direction
