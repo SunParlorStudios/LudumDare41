@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class TypeWriter : MonoBehaviour
 {
-    public delegate void WordListener(string str);
+    public delegate void NewCharacterListener(char character, string preInput, string postInput);
+    public delegate void ResetListener(string errorWord);
+    public delegate void WordListener(string word);
+
+    public ResetListener resetEvent;
+    public NewCharacterListener newCharacterEvent;
 
     public string currentInput
     {
@@ -13,10 +18,7 @@ public class TypeWriter : MonoBehaviour
             return currentInput_;
         }
     }
-
-    public bool requireInputConfirmation = false;
-    public bool resetInputOnIncorrectWord = false;
-
+    
     private string currentInput_;
     private Dictionary<string, WordListener> words_;
 
@@ -24,74 +26,61 @@ public class TypeWriter : MonoBehaviour
     {
         words_ = new Dictionary<string, WordListener>();
         currentInput_ = "";
-
-        RegisterWord("kappa", WordEvtReceiver);
-    }
-
-    public void WordEvtReceiver(string word)
-    {
-        Debug.Log(word + " was typed fully");
     }
 	
 	void Update ()
     {
-        if (requireInputConfirmation)
+        foreach (char c in Input.inputString)
         {
-            foreach (char c in Input.inputString)
+            string preInput = currentInput_;
+            if (c == '\b')
             {
-                if (c == '\b') // Check for backspace
+                if (currentInput_.Length != 0)
                 {
-                    if (currentInput_.Length != 0)
-                    {
-                        currentInput_ = currentInput_.Remove(currentInput_.Length - 1, 1);
-                    }
-                }
-                else if (c == '\n' || c == '\r')
-                {
-                    if (words_.ContainsKey(currentInput_))
-                    {
-                        words_[currentInput_].Invoke(currentInput_);
-
-                        currentInput_ = "";
-                    }
-                    else if (resetInputOnIncorrectWord)
-                    {
-                        currentInput_ = "";
-                    }
-                }
-                else
-                {
-                    currentInput_ += c;
+                    currentInput_ = currentInput_.Remove(currentInput_.Length - 1, 1);
                 }
             }
-        }
-        else
-        {
-            foreach (char c in Input.inputString)
+            else
             {
-                if (c == '\b')
+                currentInput_ += c;
+
+                bool foundMatchingWord = false;
+                foreach (KeyValuePair<string, WordListener> entry in words_)
                 {
-                    if (currentInput_.Length != 0)
+                    if (entry.Key.Substring(0, currentInput_.Length) == currentInput_)
                     {
-                        currentInput_ = currentInput_.Remove(currentInput_.Length - 1, 1);
+                        foundMatchingWord = true;
+                        break;
                     }
+                }
+
+                if (!foundMatchingWord)
+                {
+                    if (resetEvent != null)
+                    {
+                        resetEvent.Invoke(currentInput_);
+                    }
+
+                    currentInput_ = "";
                 }
                 else
                 {
-                    currentInput_ += c;
-
                     if (words_.ContainsKey(currentInput_))
                     {
                         words_[currentInput_].Invoke(currentInput_);
-
                         currentInput_ = "";
                     }
                 }
+            }
+
+            if (newCharacterEvent != null)
+            {
+                newCharacterEvent.Invoke(c, preInput, currentInput_);
             }
         }
     }
 
-    void RegisterWord(string word, WordListener listener)
+    public void RegisterWord(string word, WordListener listener)
     {
         if (words_.ContainsKey(word))
         {
