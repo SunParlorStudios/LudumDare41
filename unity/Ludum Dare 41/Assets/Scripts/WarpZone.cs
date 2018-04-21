@@ -40,6 +40,11 @@ public class WarpZone : MonoBehaviour
 
   void Warp(GameObject go, Player.Direction direction)
   {
+    if (go.GetComponent<Player>().alive == false)
+    {
+      return;
+    }
+
     CreateParticle(go.transform.position);
 
     Vector3 offset = go.transform.position - transform.position;

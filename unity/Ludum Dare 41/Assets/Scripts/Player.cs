@@ -32,6 +32,12 @@ public class Player : MonoBehaviour
 
   private Vector3 startLocation_;
   private GameObject deathObject_;
+  private bool alive_;
+
+  public bool alive
+  {
+    get { return alive_; }
+  }
 
   void Awake()
   {
@@ -41,6 +47,7 @@ public class Player : MonoBehaviour
     rigidBody_ = GetComponent<Rigidbody2D>();
     typeWriter_ = GetComponent<TypeWriter>();
     lockedOn_ = null;
+    alive_ = true;
   }
 
   void Start()
@@ -65,6 +72,9 @@ public class Player : MonoBehaviour
 
     enabled = true;
     SetVisible(true);
+
+    alive_ = true;
+    rigidBody_.simulated = true;
   }
 
   public Direction GetDirection()
@@ -273,13 +283,17 @@ public class Player : MonoBehaviour
 
   public void Kill()
   {
-    if (enabled == false)
+    if (alive_ == false)
     {
       return;
     }
 
     if (game_.state == GameState.Game)
     {
+      alive_ = false;
+      rigidBody_.velocity = Vector3.zero;
+      rigidBody_.simulated = false;
+
       enabled = false;
       SetVisible(false);
       deathObject_ = Instantiate(deathPrefab, transform.position, Quaternion.identity, null);
