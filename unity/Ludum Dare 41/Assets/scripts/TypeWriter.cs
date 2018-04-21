@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class TypeWriter : MonoBehaviour
 {
-    public delegate void NewCharacterListener(char character);
+    public delegate void NewCharacterListener(char character, string preInput, string postInput);
     public delegate void ResetListener(string errorWord);
     public delegate void WordListener(string word);
+
+    public ResetListener resetEvent;
+    public NewCharacterListener newCharacterEvent;
 
     public string currentInput
     {
@@ -18,8 +21,6 @@ public class TypeWriter : MonoBehaviour
     
     private string currentInput_;
     private Dictionary<string, WordListener> words_;
-    private ResetListener resetListener_;
-    private NewCharacterListener newCharacterListener_;
 
 	void Start ()
     {
@@ -31,11 +32,7 @@ public class TypeWriter : MonoBehaviour
     {
         foreach (char c in Input.inputString)
         {
-            if (newCharacterListener_ != null)
-            {
-                newCharacterListener_.Invoke(c);
-            }
-
+            string preInput = currentInput_;
             if (c == '\b')
             {
                 if (currentInput_.Length != 0)
@@ -59,9 +56,9 @@ public class TypeWriter : MonoBehaviour
 
                 if (!foundMatchingWord)
                 {
-                    if (resetListener_ != null)
+                    if (resetEvent != null)
                     {
-                        resetListener_.Invoke(currentInput_);
+                        resetEvent.Invoke(currentInput_);
                     }
 
                     currentInput_ = "";
@@ -75,10 +72,15 @@ public class TypeWriter : MonoBehaviour
                     }
                 }
             }
+
+            if (newCharacterEvent != null)
+            {
+                newCharacterEvent.Invoke(c, preInput, currentInput_);
+            }
         }
     }
 
-    void RegisterWord(string word, WordListener listener)
+    public void RegisterWord(string word, WordListener listener)
     {
         if (words_.ContainsKey(word))
         {
