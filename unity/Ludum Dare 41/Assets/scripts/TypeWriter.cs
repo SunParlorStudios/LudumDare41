@@ -22,7 +22,7 @@ public class TypeWriter : MonoBehaviour
     private string currentInput_;
     private Dictionary<string, WordListener> words_;
 
-	void Start ()
+	void Awake ()
     {
         words_ = new Dictionary<string, WordListener>();
         currentInput_ = "";

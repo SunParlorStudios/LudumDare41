@@ -21,9 +21,14 @@ public class WordVisualizer : MonoBehaviour
             text = GetComponent<Text>();
             writer.newCharacterEvent += NewCharacterReceiver;
 
-            //writer.RegisterWord("kappa", );
+            writer.RegisterWord("kappa", WordReceiver);
         }
 	}
+
+    void WordReceiver(string word)
+    {
+
+    }
 
     void NewCharacterReceiver(char c, string preInput, string postInput)
     {
