@@ -54,15 +54,35 @@ public class Countdown : MonoBehaviour
       if (text_.text != "GO!")
       {
         text_.text = "GO!";
+        animationTime_ = 0.0f;
+      }
+    }
+    
+    animationTime_ += Time.deltaTime;
+    text_.fontSize = (int)Mathf.Lerp(500, 100, Mathf.Clamp(animationTime_ / animationDuration_, 0, 1));
 
+    if (text_.text == "GO!")
+    {
+      if (animationTime_ > animationDuration_)
+      {
         if (CountdownFinishedEvent != null)
         {
           CountdownFinishedEvent.Invoke();
         }
       }
-    }
 
-    animationTime_ += Time.deltaTime;
-    text_.fontSize = (int)Mathf.Lerp(500, 100, Mathf.Clamp(animationTime_ / animationDuration_, 0, 1));
+      text_.color = new Color(
+        text_.color.r,
+        text_.color.g,
+        text_.color.b,
+        Mathf.Lerp(1.0f, 0.0f, (animationTime_ - animationDuration_) / 0.3f)
+      );
+
+      if (animationTime_ - animationDuration_ > 0.3f)
+      {
+        enabled = false;
+        text_.color = new Color(text_.color.r, text_.color.g, text_.color.b, 0.0f);
+      }
+    }
   }
 }
