@@ -75,6 +75,8 @@ public class Player : MonoBehaviour
 
     alive_ = true;
     rigidBody_.simulated = true;
+    direction_ = Direction.kRight;
+    transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
   }
 
   public Direction GetDirection()
