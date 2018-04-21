@@ -24,7 +24,7 @@ public class Game : MonoBehaviour
   private FollowCamera followCamera_;
   private OverviewCamera overviewCamera_;
 
-  void Start()
+  void Awake()
   {
     state_ = GameState.LevelOverview;
 

@@ -22,6 +22,12 @@ public class OverviewCamera : MonoBehaviour
     originalPosition_ = transform.position;
     currentPoint_ = 0;
     animationTime_ = 0.0f;
+
+    if (overviewPoints.Count == 0)
+    {
+      enabled = false;
+      OverviewFinishedEvent.Invoke();
+    }
 	}
 	
 	void Update ()

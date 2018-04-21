@@ -527,29 +527,32 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114563126934809284, guid: 05de31e9eb94299429c720a46a29807f,
-        type: 2}
-      propertyPath: overviewPoints.Array.data[0]
-      value: 
-      objectReference: {fileID: 665649272}
-    - target: {fileID: 114563126934809284, guid: 05de31e9eb94299429c720a46a29807f,
-        type: 2}
-      propertyPath: overviewPoints.Array.data[1]
-      value: 
-      objectReference: {fileID: 1285889097}
-    - target: {fileID: 114563126934809284, guid: 05de31e9eb94299429c720a46a29807f,
-        type: 2}
-      propertyPath: overviewPoints.Array.data[2]
-      value: 
-      objectReference: {fileID: 1790106490}
-    - target: {fileID: 114563126934809284, guid: 05de31e9eb94299429c720a46a29807f,
-        type: 2}
-      propertyPath: overviewPoints.Array.data[3]
-      value: 
-      objectReference: {fileID: 1210725273}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05de31e9eb94299429c720a46a29807f, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1501424146 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1292785318039602, guid: 05de31e9eb94299429c720a46a29807f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1501424144}
+--- !u!114 &1501424147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1501424146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a7b759008db6c418bfe7face10dd7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overviewPoints:
+  - {fileID: 665649272}
+  - {fileID: 1285889097}
+  - {fileID: 1790106490}
+  - {fileID: 1210725273}
+  pointToPointDuration: 1
+  cooldownDuration: 0.5
 --- !u!1 &1662066269
 GameObject:
   m_ObjectHideFlags: 0

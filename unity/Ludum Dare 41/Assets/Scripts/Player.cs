@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
   public float jumpCheckRay;
   public float lockRange;
   public GameObject laserPrefab;
+  public Reticle reticle;
 
   private Direction direction_;
   private Rigidbody2D rigidBody_;
@@ -73,7 +74,12 @@ public class Player : MonoBehaviour
     if (nearest != null)
     {
       lockedOn_ = nearest.GetComponent<Enemy>();
+      reticle.SetTarget(lockedOn_.transform);
+
+      return;
     }
+
+    reticle.SetTarget(null);
   }
 
   private void Shoot(string word)
@@ -96,6 +102,7 @@ public class Player : MonoBehaviour
     {
       Destroy(lockedOn_.gameObject);
       lockedOn_ = null;
+      reticle.SetTarget(null);
     }
 
     float distance = d.magnitude;
