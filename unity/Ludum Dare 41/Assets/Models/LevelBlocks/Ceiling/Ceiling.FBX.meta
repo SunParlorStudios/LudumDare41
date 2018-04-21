@@ -14,7 +14,17 @@ ModelImporter:
     3300000: //RootNode
     4300000: Box015
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 02 - Default
+    second: {fileID: 2100000, guid: c4783c37cb4da19428360964b9e897f6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WallTexture
+    second: {fileID: 2100004, guid: 9d0f007c5c1dcb7419baeab8209a8539, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
