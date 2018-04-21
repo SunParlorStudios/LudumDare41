@@ -52,7 +52,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1169034704061982}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 18.9, y: 9.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4322560568804060}
@@ -141,8 +141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 042ed4d53ba2795499e910d62e4937fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aggroRange: 8
+  aggroRange: 15
   wobbleSpeed: 2
   wobbleHeight: 0.5
-  attackStepSize: 0.025
+  attackStepSize: 0.02
   offset: {x: 0, y: 0.5, z: 0}
