@@ -16,7 +16,7 @@ public class Countdown : MonoBehaviour
   private float animationTime_ = 0.0f;
   private float animationDuration_ = 0.3f;
 
-  void Start()
+  void Awake()
   {
     text_ = GetComponent<Text>();
   }
@@ -84,5 +84,16 @@ public class Countdown : MonoBehaviour
         text_.color = new Color(text_.color.r, text_.color.g, text_.color.b, 0.0f);
       }
     }
+  }
+
+  public void Skip()
+  {
+    animationTime_ = 0.0f;
+    countdown_ = 0.0f;
+
+    text_.text = "";
+    text_.color = new Color(text_.color.r, text_.color.g, text_.color.b, 0.0f);
+
+    enabled = false;
   }
 }

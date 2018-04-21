@@ -107,4 +107,13 @@ public class OverviewCamera : MonoBehaviour
       transform.position = new Vector3(transform.position.x, transform.position.y, originalPosition_.z);
     }
 	}
+
+  public void Skip()
+  {
+    animationTime_ = 0.0f;
+    currentPoint_ = 0;
+    transform.position = originalPosition_;
+
+    enabled = false;
+  }
 }
