@@ -19,6 +19,9 @@ public class Player : MonoBehaviour
   public GameObject laserPrefab;
   public GameObject deathPrefab;
   public Reticle reticle;
+  public bool isCarrying;
+  public float pickupDistance = 2.0f;
+  public BoxCollider2D pickupCollider;
 
   private Direction direction_;
   private Rigidbody2D rigidBody_;
@@ -48,6 +51,7 @@ public class Player : MonoBehaviour
     typeWriter_ = GetComponent<TypeWriter>();
     lockedOn_ = null;
     alive_ = true;
+    isCarrying = false;
   }
 
   void Start()

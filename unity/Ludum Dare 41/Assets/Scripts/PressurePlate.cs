@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PressurePlate : MonoBehaviour
 {
-	void Start ()
+	void Start()
   {
 		
 	}
 	
-	void Update ()
+	void Update()
   {
 		
 	}
