@@ -83,15 +83,19 @@ public class Player : MonoBehaviour
       return;
     }
 
-
     Vector3 d = lockedOn_.transform.position - transform.position;
 
-    RaycastHit2D hit = Physics2D.Raycast(transform.position, d, lockRange);
+    RaycastHit2D hit = Physics2D.Raycast(transform.position, d.normalized, d.magnitude);
     
     if (hit == true)
     {
       Vector2 p1 = transform.position;
       d = hit.point - p1;
+    }
+    else
+    {
+      Destroy(lockedOn_.gameObject);
+      lockedOn_ = null;
     }
 
     float distance = d.magnitude;
@@ -106,7 +110,7 @@ public class Player : MonoBehaviour
     s.x = distance;
 
     go.transform.localScale = s;
-    go.transform.rotation = Quaternion.Euler(0.0f, 0.0f, angle);
+    go.transform.rotation = Quaternion.Euler(0.0f, 0.0f, angle * Mathf.Rad2Deg);
   }
 
   private bool CheckGrounded()

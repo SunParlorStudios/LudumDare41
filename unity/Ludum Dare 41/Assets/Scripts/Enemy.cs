@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
   public float wobbleSpeed;
   public float wobbleHeight;
   public float attackStepSize;
+  public Vector3 offset;
 
   private State state_;
   private Player target_;
@@ -69,7 +70,23 @@ public class Enemy : MonoBehaviour
 
   private void Attack()
   {
-    transform.position = Vector3.Lerp(transform.position, target_.transform.position, attackStepSize);
+    Vector3 p2 = target_.transform.position + offset;
+    transform.position = Vector3.Lerp(transform.position, p2, attackStepSize);
+
+    Vector3 d = p2 - transform.position;
+    float angle = Mathf.Atan2(d.y, d.x);
+
+    float sy = 1.0f;
+    if (angle < -Mathf.PI * 0.5f || angle > Mathf.PI * 0.5f)
+    {
+      sy = -1.0f;
+    }
+
+    Vector3 s = transform.localScale;
+    s.y = sy;
+    transform.localScale = s;
+
+    transform.rotation = Quaternion.Euler(0.0f, 0.0f, angle * Mathf.Rad2Deg);
   }
 
 	void Update()
