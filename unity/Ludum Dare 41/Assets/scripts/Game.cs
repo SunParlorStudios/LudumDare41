@@ -4,7 +4,8 @@ using UnityEngine;
 
 public enum GameState
 {
-  PreGame,
+  LevelOverview,
+  Countdown,
   Game,
   PostGame
 }
@@ -20,14 +21,34 @@ public class Game : MonoBehaviour
   }
 
   private GameState state_;
+  private FollowCamera followCamera_;
+  private OverviewCamera overviewCamera_;
 
   void Start()
   {
-    state_ = GameState.PreGame;
+    state_ = GameState.LevelOverview;
+
+    GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
+
+    followCamera_ = camera.GetComponent<FollowCamera>();
+    overviewCamera_ = camera.GetComponent<OverviewCamera>();
+
+    followCamera_.enabled = false;
+    overviewCamera_.enabled = true;
+
+    overviewCamera_.OverviewFinishedEvent += OverviewFinishedListener;
   }
 
   void Update()
   {
+    
+  }
 
+  void OverviewFinishedListener()
+  {
+    state_ = GameState.Countdown;
+
+    overviewCamera_.enabled = false;
+    followCamera_.enabled = true;
   }
 }
