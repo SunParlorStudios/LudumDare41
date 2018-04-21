@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114897712965549630}
   - component: {fileID: 114602087853763966}
   m_Layer: 5
-  m_Name: WordCompletionEffect
+  m_Name: WordSuccessEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

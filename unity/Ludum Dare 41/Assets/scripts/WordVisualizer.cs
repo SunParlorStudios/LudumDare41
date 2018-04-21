@@ -8,7 +8,8 @@ public class WordVisualizer : MonoBehaviour
 {
     public TypeWriter writer;
 
-    public GameObject wordCompletionEffect;
+    public GameObject wordSuccessEffect;
+    public GameObject wordFailEffect;
 
     private Text text;
 
@@ -23,15 +24,26 @@ public class WordVisualizer : MonoBehaviour
             text = GetComponent<Text>();
             writer.newCharacterEvent += NewCharacterReceiver;
 
-            writer.anyWordCompletedEvent += WordReceiver;
+            writer.anyWordCompletedEvent += WordSuccessReceiver;
+            writer.resetEvent += WordFailReceiver;
         }
-	}
+    }
 
-    void WordReceiver(string word)
+    void WordSuccessReceiver(string word)
     {
-        if (wordCompletionEffect != null)
+        if (wordSuccessEffect != null)
         {
-            GameObject effect = Instantiate(wordCompletionEffect, transform.parent);
+            GameObject effect = Instantiate(wordSuccessEffect, transform.parent);
+            effect.transform.position = transform.position;
+            effect.GetComponent<Text>().text = word;
+        }
+    }
+
+    void WordFailReceiver(string word)
+    {
+        if (wordFailEffect != null)
+        {
+            GameObject effect = Instantiate(wordFailEffect, transform.parent);
             effect.transform.position = transform.position;
             effect.GetComponent<Text>().text = word;
         }

@@ -525,7 +525,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   writer: {fileID: 114794577131315242}
-  wordCompletionEffect: {fileID: 1687631361411796, guid: 03773ac4aaf4e934aa1927001d711f85,
+  wordSuccessEffect: {fileID: 1687631361411796, guid: 03773ac4aaf4e934aa1927001d711f85,
+    type: 2}
+  wordFailEffect: {fileID: 1978609339192222, guid: 237107fa6e436544d967383530193fa8,
     type: 2}
 --- !u!114 &114749798489534566
 MonoBehaviour:
