@@ -31,7 +31,6 @@ public class Player : MonoBehaviour
   private Game game_;
 
   private Vector3 startLocation_;
-  private GameObject deathObject_;
   private bool alive_;
 
   public bool alive
@@ -63,20 +62,7 @@ public class Player : MonoBehaviour
 
   void Respawn()
   {
-    transform.position = startLocation_;
-    if (deathObject_ != null)
-    {
-      Destroy(deathObject_.gameObject);
-      deathObject_ = null;
-    }
-
-    enabled = true;
-    SetVisible(true);
-
-    alive_ = true;
-    rigidBody_.simulated = true;
-    direction_ = Direction.kRight;
-    transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+    UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
   }
 
   public Direction GetDirection()
@@ -298,7 +284,7 @@ public class Player : MonoBehaviour
 
       enabled = false;
       SetVisible(false);
-      deathObject_ = Instantiate(deathPrefab, transform.position, Quaternion.identity, null);
+      Instantiate(deathPrefab, transform.position, Quaternion.identity, null);
     }
   }
 }
