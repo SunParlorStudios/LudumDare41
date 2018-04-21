@@ -39,6 +39,16 @@ public class OverviewCamera : MonoBehaviour
         break;
       }
     }
+
+    if (overviewPoints.Count == 0)
+    {
+      enabled = false;
+
+      if (OverviewFinishedEvent != null)
+      {
+        OverviewFinishedEvent.Invoke();
+      }
+    }
 	}
 	
 	void Update ()

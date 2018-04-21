@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D), typeof(TypeWriter))]
 public class Player : MonoBehaviour
 {
   public enum Direction
@@ -26,8 +27,12 @@ public class Player : MonoBehaviour
 
   private bool grounded_;
 
+  private Game game_;
+
   void Awake()
   {
+    game_ = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
+
     direction_ = Direction.kRight;
     rigidBody_ = GetComponent<Rigidbody2D>();
     typeWriter_ = GetComponent<TypeWriter>();
@@ -203,18 +208,24 @@ public class Player : MonoBehaviour
 
   void FixedUpdate()
   {
-    if (rigidBody_ == null)
+    if (game_.state == GameState.Game)
     {
-      return;
-    }
+      if (rigidBody_ == null)
+      {
+        return;
+      }
 
-    AddDirectionalForce();
-    ClampVelocity();
+      AddDirectionalForce();
+      ClampVelocity();
+    }
   }
 
   void Update()
   {
-    grounded_ = CheckGrounded();
-    LockOn();
+    if (game_.state == GameState.Game)
+    {
+      grounded_ = CheckGrounded();
+      LockOn();
+    }
   }
 }

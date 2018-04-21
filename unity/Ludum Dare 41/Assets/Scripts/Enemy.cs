@@ -22,8 +22,11 @@ public class Enemy : MonoBehaviour
   private Vector3 current_;
   private float wobbleTimer_;
 
+  private Game game_;
+
   void Awake()
   {
+    game_ = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
     state_ = State.kHovering;
     target_ = null;
   }
@@ -91,27 +94,33 @@ public class Enemy : MonoBehaviour
 
   void Update()
   {
-    switch (state_)
+    if (game_.state == GameState.Game)
     {
-      case State.kHovering:
-        Hover();
-        break;
+      switch (state_)
+      {
+        case State.kHovering:
+          Hover();
+          break;
 
-      default:
-        break;
+        default:
+          break;
+      }
     }
   }
 
   void FixedUpdate()
   {
-    switch (state_)
+    if (game_.state == GameState.Game)
     {
-      case State.kAttacking:
-        Attack();
-        break;
+      switch (state_)
+      {
+        case State.kAttacking:
+          Attack();
+          break;
 
-      default:
-        break;
+        default:
+          break;
+      }
     }
   }
 
