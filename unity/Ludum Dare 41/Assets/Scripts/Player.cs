@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
   public float jumpCheckRay;
   public float lockRange;
   public GameObject laserPrefab;
+  public GameObject deathPrefab;
   public Reticle reticle;
 
   private Direction direction_;
@@ -28,6 +29,9 @@ public class Player : MonoBehaviour
   private bool grounded_;
 
   private Game game_;
+
+  private Vector3 startLocation_;
+  private GameObject deathObject_;
 
   void Awake()
   {
@@ -44,6 +48,23 @@ public class Player : MonoBehaviour
     typeWriter_.RegisterWord("jump", OnWord);
     typeWriter_.RegisterWord("turn", OnWord);
     typeWriter_.RegisterWord("shoot", OnWord);
+    typeWriter_.RegisterWord("reset", OnWord);
+    typeWriter_.RegisterWord("kys", OnWord);
+
+    startLocation_ = transform.position;
+  }
+
+  void Respawn()
+  {
+    transform.position = startLocation_;
+    if (deathObject_ != null)
+    {
+      Destroy(deathObject_.gameObject);
+      deathObject_ = null;
+    }
+
+    enabled = true;
+    SetVisible(true);
   }
 
   public Direction GetDirection()
@@ -65,6 +86,14 @@ public class Player : MonoBehaviour
 
       case "shoot":
         Shoot();
+        break;
+
+      case "reset":
+        Respawn();
+        break;
+
+      case "kys":
+        Kill();
         break;
 
       default:
@@ -231,6 +260,29 @@ public class Player : MonoBehaviour
     {
       grounded_ = CheckGrounded();
       LockOn();
+    }
+  }
+
+  void SetVisible(bool enabled)
+  {
+    foreach (MeshRenderer mr in GetComponentsInChildren<MeshRenderer>())
+    {
+      mr.enabled = enabled;
+    }
+  }
+
+  public void Kill()
+  {
+    if (enabled == false)
+    {
+      return;
+    }
+
+    if (game_.state == GameState.Game)
+    {
+      enabled = false;
+      SetVisible(false);
+      deathObject_ = Instantiate(deathPrefab, transform.position, Quaternion.identity, null);
     }
   }
 }
