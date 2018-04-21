@@ -1,18 +1,16 @@
 fileFormatVersion: 2
-guid: 18cd544193f519447ad417016767e2c3
-timeCreated: 1524295957
+guid: d8fb1b80c48180f4e857929cbb2730c4
+timeCreated: 1524342929
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: No Name
-    2100002: WallTexture
-    2100004: 02 - Default
+    2100000: WallTexture
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Box014
+    4300000: Box028
     9500000: //RootNode
   externalObjects: {}
   materials:
