@@ -9,51 +9,53 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1687631361411796}
+  m_RootGameObject: {fileID: 1978609339192222}
   m_IsPrefabParent: 1
---- !u!1 &1687631361411796
+--- !u!1 &1978609339192222
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 224477557977690418}
-  - component: {fileID: 222462467791812516}
-  - component: {fileID: 114897712965549630}
-  - component: {fileID: 114602087853763966}
+  - component: {fileID: 224993066950955000}
+  - component: {fileID: 222322257659617020}
+  - component: {fileID: 114781394490196010}
+  - component: {fileID: 114156426338002366}
   m_Layer: 5
-  m_Name: WordCompletionEffect
+  m_Name: WordFailEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114602087853763966
+--- !u!114 &114156426338002366
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1687631361411796}
+  m_GameObject: {fileID: 1978609339192222}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ed7d62dbd6a975479d7adeb54e82e84, type: 3}
+  m_Script: {fileID: 11500000, guid: 1703f297dc3ecd94aaf63c17f9232c73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 0.3
---- !u!114 &114897712965549630
+  numOscillations: 3
+  oscillationIntensity: 35
+--- !u!114 &114781394490196010
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1687631361411796}
+  m_GameObject: {fileID: 1978609339192222}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: dfc26cf70989b2b449af5b5bef5a5362, type: 2}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Material: {fileID: 2100000, guid: d88c786573fbc9d49af299cf31c893b1, type: 2}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -61,7 +63,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: ef463cf7375010d4c92cce27aab9ee1c, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -74,18 +76,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
---- !u!222 &222462467791812516
+--- !u!222 &222322257659617020
 CanvasRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1687631361411796}
---- !u!224 &224477557977690418
+  m_GameObject: {fileID: 1978609339192222}
+--- !u!224 &224993066950955000
 RectTransform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1687631361411796}
+  m_GameObject: {fileID: 1978609339192222}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}

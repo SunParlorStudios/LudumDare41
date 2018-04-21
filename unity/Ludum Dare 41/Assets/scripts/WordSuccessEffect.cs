@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Text))]
-public class WordCompletionEffect : MonoBehaviour
+public class WordSuccessEffect : MonoBehaviour
 {
     public float duration = 0.3f;
     private float playbackTime_;
