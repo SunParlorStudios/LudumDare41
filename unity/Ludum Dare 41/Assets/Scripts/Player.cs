@@ -44,10 +44,7 @@ public class Player : MonoBehaviour
     bool grounded = false;
     if (Physics2D.Raycast(transform.position, Vector2.down, jumpCheckRay) == true)
     {
-      if (Vector3.Dot(rigidBody_.velocity, Vector3.up) <= 0.0f)
-      {
-        grounded =  true;
-      }
+      grounded = true;
     }
 
     Debug.DrawLine(transform.position, transform.position + Vector3.down * jumpCheckRay,
