@@ -146,3 +146,5 @@ MonoBehaviour:
   wobbleHeight: 0.5
   attackStepSize: 0.02
   offset: {x: 0, y: 0.5, z: 0}
+  explosionPrefab: {fileID: 1065649775051994, guid: bc2affb6acaa9db4e8462b2b86eef615,
+    type: 2}

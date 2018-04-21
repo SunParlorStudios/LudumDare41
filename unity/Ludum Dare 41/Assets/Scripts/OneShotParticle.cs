@@ -6,9 +6,22 @@ public class OneShotParticle : MonoBehaviour
 {
   void FixedUpdate()
   {
-    if (GetComponent<ParticleSystem>().isPlaying == false)
+    ParticleSystem[] systems = GetComponentsInChildren<ParticleSystem>();
+
+    foreach (ParticleSystem system in systems)
     {
-      Destroy(gameObject);
+      if (system.isPlaying == true)
+      {
+        return;
+      }
     }
+
+    ParticleSystem p = GetComponent<ParticleSystem>();
+    if (p != null && p.isPlaying == true)
+    {
+      return;
+    }
+
+    Destroy(gameObject);
   }
 }
