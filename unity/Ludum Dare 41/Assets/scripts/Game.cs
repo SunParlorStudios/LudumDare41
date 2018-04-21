@@ -12,6 +12,8 @@ public enum GameState
 
 public class Game : MonoBehaviour
 {
+  public Countdown countdown;
+
   public GameState state
   {
     get
@@ -35,8 +37,10 @@ public class Game : MonoBehaviour
 
     followCamera_.enabled = false;
     overviewCamera_.enabled = true;
+    countdown.enabled = false;
 
     overviewCamera_.OverviewFinishedEvent += OverviewFinishedListener;
+    countdown.CountdownFinishedEvent += CountdownFinishedListener;
   }
 
   void Update()
@@ -46,9 +50,16 @@ public class Game : MonoBehaviour
 
   void OverviewFinishedListener()
   {
-    state_ = GameState.Game;
+    state_ = GameState.Countdown;
 
     overviewCamera_.enabled = false;
     followCamera_.enabled = true;
+
+    countdown.enabled = true;
+  }
+
+  void CountdownFinishedListener()
+  {
+    state_ = GameState.Game;
   }
 }
