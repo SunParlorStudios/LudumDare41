@@ -6,38 +6,52 @@ public class TypeWriter : MonoBehaviour
 {
     public delegate void WordListener(string str);
 
-    private string currentInput;
-    private Dictionary<string, WordListener> words;
+    public string currentInput
+    {
+        get
+        {
+            return currentInput_;
+        }
+    }
+
+    private string currentInput_;
+    private Dictionary<string, WordListener> words_;
 
 	void Start ()
     {
-        words = new Dictionary<string, WordListener>();
+        words_ = new Dictionary<string, WordListener>();
+        currentInput_ = "";
     }
 	
 	void Update ()
     {
-        if (Input.inputString != "")
+        foreach (char c in Input.inputString)
         {
-            currentInput += Input.inputString;
-
-            if(words.ContainsKey(currentInput))
+            if (c == '\b') // Check for backspace
             {
-                words[currentInput].Invoke(currentInput);
-
-                currentInput = "";
+                if (currentInput_.Length != 0)
+                {
+                    currentInput_ = currentInput_.Remove(currentInput_.Length - 1, 1);
+                }
             }
+            else
+            {
+                currentInput_ += c;
+            }
+
+            Debug.Log(currentInput_);
         }
     }
 
     void RegisterWord(string word, WordListener listener)
     {
-        if (words.ContainsKey(word))
+        if (words_.ContainsKey(word))
         {
-            words[word] += listener;
+            words_[word] += listener;
         }
         else
         {
-            words.Add(word, listener);
+            words_.Add(word, listener);
         }
     }
 }
