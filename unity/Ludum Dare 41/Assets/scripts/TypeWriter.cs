@@ -5,7 +5,7 @@ using UnityEngine;
 public class TypeWriter : MonoBehaviour
 {
     public delegate void NewCharacterListener(char character);
-    public delegate void ResetListener();
+    public delegate void ResetListener(string errorWord);
     public delegate void WordListener(string word);
 
     public string currentInput
@@ -31,7 +31,11 @@ public class TypeWriter : MonoBehaviour
     {
         foreach (char c in Input.inputString)
         {
-            newCharacterListener_.Invoke(c);
+            if (newCharacterListener_ != null)
+            {
+                newCharacterListener_.Invoke(c);
+            }
+
             if (c == '\b')
             {
                 if (currentInput_.Length != 0)
@@ -55,7 +59,11 @@ public class TypeWriter : MonoBehaviour
 
                 if (!foundMatchingWord)
                 {
-                    resetListener_.Invoke();
+                    if (resetListener_ != null)
+                    {
+                        resetListener_.Invoke(currentInput_);
+                    }
+
                     currentInput_ = "";
                 }
                 else
