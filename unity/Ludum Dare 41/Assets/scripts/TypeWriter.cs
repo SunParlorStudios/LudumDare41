@@ -47,7 +47,7 @@ public class TypeWriter : MonoBehaviour
                 bool foundMatchingWord = false;
                 foreach (KeyValuePair<string, WordListener> entry in words_)
                 {
-                    if (entry.Key.Substring(0, currentInput_.Length) == currentInput_)
+                    if (entry.Key.Substring(0, Mathf.Clamp(currentInput_.Length, 0, entry.Key.Length)) == currentInput_)
                     {
                         foundMatchingWord = true;
                         break;

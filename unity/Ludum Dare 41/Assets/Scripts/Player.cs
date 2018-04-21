@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
 
   private Direction direction_;
   private Rigidbody2D rigidBody_;
+  private TypeWriter typeWriter_;
 
   private bool grounded_;
 
@@ -24,9 +25,16 @@ public class Player : MonoBehaviour
   {
 		direction_ = Direction.kRight;
     rigidBody_ = GetComponent<Rigidbody2D>();
+    typeWriter_ = GetComponent<TypeWriter>();
 	}
 
-  private void SwitchDirection()
+  void Start()
+  {
+    typeWriter_.RegisterWord("jump", Jump);
+    typeWriter_.RegisterWord("switch", SwitchDirection);
+  }
+
+  private void SwitchDirection(string word)
   {
     direction_ = direction_ == Direction.kLeft ? Direction.kRight : Direction.kLeft;
   }
@@ -48,7 +56,7 @@ public class Player : MonoBehaviour
     return grounded;
   }
 
-  private void Jump()
+  private void Jump(string word)
   {
     if (grounded_ == false)
     {
