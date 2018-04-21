@@ -37,6 +37,11 @@ public class Player : MonoBehaviour
   private void SwitchDirection(string word)
   {
     direction_ = direction_ == Direction.kLeft ? Direction.kRight : Direction.kLeft;
+
+    Vector3 scale = transform.localScale;
+    scale.x = direction_ == Direction.kLeft ? -1.0f : 1.0f;
+
+    transform.localScale = scale;
   }
 
   private bool CheckGrounded()
