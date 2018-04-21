@@ -14,10 +14,14 @@ public class Player : MonoBehaviour
   public float maxSpeed;
   public float jumpForce;
   public float jumpCheckRay;
+  public float lockRange;
+  public GameObject laserPrefab;
 
   private Direction direction_;
   private Rigidbody2D rigidBody_;
   private TypeWriter typeWriter_;
+
+  private Enemy lockedOn_;
 
   private bool grounded_;
 
@@ -26,12 +30,15 @@ public class Player : MonoBehaviour
 		direction_ = Direction.kRight;
     rigidBody_ = GetComponent<Rigidbody2D>();
     typeWriter_ = GetComponent<TypeWriter>();
-	}
+    lockedOn_ = null;
+  }
 
   void Start()
   {
     typeWriter_.RegisterWord("jump", Jump);
     typeWriter_.RegisterWord("turn", SwitchDirection);
+    typeWriter_.RegisterWord("lock", LockOn);
+    typeWriter_.RegisterWord("shoot", Shoot);
   }
 
   private void SwitchDirection(string word)
@@ -42,6 +49,64 @@ public class Player : MonoBehaviour
     scale.x = direction_ == Direction.kLeft ? -1.0f : 1.0f;
 
     transform.localScale = scale;
+  }
+
+  private void LockOn(string word)
+  {
+    GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+    float dist = 0.0f;
+    GameObject nearest = null;
+
+    foreach (GameObject go in enemies)
+    {
+      Vector3 d = go.transform.position - transform.position;
+      float distance = d.magnitude;
+
+      if (distance <= lockRange && (distance < dist || nearest == null))
+      {
+        nearest = go;
+        dist = distance;
+      }
+    }
+
+    if (nearest != null)
+    {
+      lockedOn_ = nearest.GetComponent<Enemy>();
+    }
+  }
+
+  private void Shoot(string word)
+  {
+    if (lockedOn_ == null)
+    {
+      return;
+    }
+
+
+    Vector3 d = lockedOn_.transform.position - transform.position;
+
+    RaycastHit2D hit = Physics2D.Raycast(transform.position, d, lockRange);
+    
+    if (hit == true)
+    {
+      Vector2 p1 = transform.position;
+      d = hit.point - p1;
+    }
+
+    float distance = d.magnitude;
+
+    float angle = Mathf.Atan2(d.y, d.x);
+
+    Vector3 p = transform.position + d.normalized * distance * 0.5f;
+
+    GameObject go = Instantiate(laserPrefab, p, Quaternion.identity, null);
+    Vector3 s = go.transform.localScale;
+
+    s.x = distance;
+
+    go.transform.localScale = s;
+    go.transform.rotation = Quaternion.Euler(0.0f, 0.0f, angle);
   }
 
   private bool CheckGrounded()
