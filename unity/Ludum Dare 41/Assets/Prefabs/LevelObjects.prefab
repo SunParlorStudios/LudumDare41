@@ -518,6 +518,7 @@ MonoBehaviour:
   laserPrefab: {fileID: 1032154859653546, guid: 7a6885d3d3f0bcc44af819526cc52c9a,
     type: 2}
   reticle: {fileID: 114608397442170422}
+  timeScaleSmoothing: 0.5
 --- !u!114 &114257494475513154
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -548,9 +549,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   overviewPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   pointToPointDuration: 1
   cooldownDuration: 0.5
