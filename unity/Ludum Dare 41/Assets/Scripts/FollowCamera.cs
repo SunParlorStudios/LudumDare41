@@ -9,13 +9,13 @@ public class FollowCamera : MonoBehaviour
 
   [Range(0.0f, 1.0f)]
   public float stepSize;
-  
-	void Start()
+
+  void Start()
   {
-		
-	}
-	
-	void FixedUpdate()
+
+  }
+
+  void FixedUpdate()
   {
     if (target == null)
     {
@@ -25,5 +25,5 @@ public class FollowCamera : MonoBehaviour
     Vector3 t = target.position + offset;
 
     transform.position = Vector3.Lerp(transform.position, t, stepSize);
-	}
+  }
 }

@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour
   {
     current_ = transform.position;
     target_ = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-	}
+  }
 
   private bool ShouldAttack()
   {
@@ -89,9 +89,9 @@ public class Enemy : MonoBehaviour
     transform.rotation = Quaternion.Euler(0.0f, 0.0f, angle * Mathf.Rad2Deg);
   }
 
-	void Update()
+  void Update()
   {
-		switch (state_)
+    switch (state_)
     {
       case State.kHovering:
         Hover();
@@ -100,7 +100,7 @@ public class Enemy : MonoBehaviour
       default:
         break;
     }
-	}
+  }
 
   void FixedUpdate()
   {
