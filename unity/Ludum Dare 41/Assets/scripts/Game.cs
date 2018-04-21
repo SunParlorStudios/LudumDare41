@@ -46,7 +46,7 @@ public class Game : MonoBehaviour
 
   void OverviewFinishedListener()
   {
-    state_ = GameState.Countdown;
+    state_ = GameState.Game;
 
     overviewCamera_.enabled = false;
     followCamera_.enabled = true;
