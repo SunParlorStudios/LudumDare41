@@ -14,6 +14,9 @@ public class TypeWriter : MonoBehaviour
         }
     }
 
+    public bool requireInputConfirmation = false;
+    public bool resetInputOnIncorrectWord = false;
+
     private string currentInput_;
     private Dictionary<string, WordListener> words_;
 
@@ -21,28 +24,68 @@ public class TypeWriter : MonoBehaviour
     {
         words_ = new Dictionary<string, WordListener>();
         currentInput_ = "";
+
+        RegisterWord("kappa", WordEvtReceiver);
+    }
+
+    public void WordEvtReceiver(string word)
+    {
+        Debug.Log(word + " was typed fully");
     }
 	
 	void Update ()
     {
-        foreach (char c in Input.inputString)
+        if (requireInputConfirmation)
         {
-            if (c == '\b') // Check for backspace
+            foreach (char c in Input.inputString)
             {
-                if (currentInput_.Length != 0)
+                if (c == '\b') // Check for backspace
                 {
-                    currentInput_ = currentInput_.Remove(currentInput_.Length - 1, 1);
+                    if (currentInput_.Length != 0)
+                    {
+                        currentInput_ = currentInput_.Remove(currentInput_.Length - 1, 1);
+                    }
+                }
+                else if (c == '\n' || c == '\r')
+                {
+                    if (words_.ContainsKey(currentInput_))
+                    {
+                        words_[currentInput_].Invoke(currentInput_);
+
+                        currentInput_ = "";
+                    }
+                    else if (resetInputOnIncorrectWord)
+                    {
+                        currentInput_ = "";
+                    }
+                }
+                else
+                {
+                    currentInput_ += c;
                 }
             }
-            else
+        }
+        else
+        {
+            foreach (char c in Input.inputString)
             {
-                currentInput_ += c;
-
-                if (words_.ContainsKey(currentInput_))
+                if (c == '\b')
                 {
-                    words_[currentInput_].Invoke(currentInput_);
+                    if (currentInput_.Length != 0)
+                    {
+                        currentInput_ = currentInput_.Remove(currentInput_.Length - 1, 1);
+                    }
+                }
+                else
+                {
+                    currentInput_ += c;
 
-                    currentInput_ = "";
+                    if (words_.ContainsKey(currentInput_))
+                    {
+                        words_[currentInput_].Invoke(currentInput_);
+
+                        currentInput_ = "";
+                    }
                 }
             }
         }
