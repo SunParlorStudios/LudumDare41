@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
   public float jumpCheckRay;
   public float lockRange;
   public GameObject laserPrefab;
+  public GameObject deathPrefab;
   public Reticle reticle;
 
   private Direction direction_;
@@ -29,6 +30,15 @@ public class Player : MonoBehaviour
 
   private Game game_;
 
+  private Vector3 startLocation_;
+  private GameObject deathObject_;
+  private bool alive_;
+
+  public bool alive
+  {
+    get { return alive_; }
+  }
+
   void Awake()
   {
     game_ = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
@@ -37,6 +47,7 @@ public class Player : MonoBehaviour
     rigidBody_ = GetComponent<Rigidbody2D>();
     typeWriter_ = GetComponent<TypeWriter>();
     lockedOn_ = null;
+    alive_ = true;
   }
 
   void Start()
@@ -44,6 +55,26 @@ public class Player : MonoBehaviour
     typeWriter_.RegisterWord("jump", OnWord);
     typeWriter_.RegisterWord("turn", OnWord);
     typeWriter_.RegisterWord("shoot", OnWord);
+    typeWriter_.RegisterWord("reset", OnWord);
+    typeWriter_.RegisterWord("kys", OnWord);
+
+    startLocation_ = transform.position;
+  }
+
+  void Respawn()
+  {
+    transform.position = startLocation_;
+    if (deathObject_ != null)
+    {
+      Destroy(deathObject_.gameObject);
+      deathObject_ = null;
+    }
+
+    enabled = true;
+    SetVisible(true);
+
+    alive_ = true;
+    rigidBody_.simulated = true;
   }
 
   public Direction GetDirection()
@@ -65,6 +96,14 @@ public class Player : MonoBehaviour
 
       case "shoot":
         Shoot();
+        break;
+
+      case "reset":
+        Respawn();
+        break;
+
+      case "kys":
+        Kill();
         break;
 
       default:
@@ -231,6 +270,33 @@ public class Player : MonoBehaviour
     {
       grounded_ = CheckGrounded();
       LockOn();
+    }
+  }
+
+  void SetVisible(bool enabled)
+  {
+    foreach (MeshRenderer mr in GetComponentsInChildren<MeshRenderer>())
+    {
+      mr.enabled = enabled;
+    }
+  }
+
+  public void Kill()
+  {
+    if (alive_ == false)
+    {
+      return;
+    }
+
+    if (game_.state == GameState.Game)
+    {
+      alive_ = false;
+      rigidBody_.velocity = Vector3.zero;
+      rigidBody_.simulated = false;
+
+      enabled = false;
+      SetVisible(false);
+      deathObject_ = Instantiate(deathPrefab, transform.position, Quaternion.identity, null);
     }
   }
 }
