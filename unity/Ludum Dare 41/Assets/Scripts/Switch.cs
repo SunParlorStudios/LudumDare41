@@ -31,7 +31,7 @@ public class Switch : MonoBehaviour
 
   void Start()
   {
-    animator_ = GetComponentInChildren<Animator>();
+    animator_ = GetComponent<Animator>();
     nextState_ = SwitchState.kRight;
     playerInRange_ = false;
 
