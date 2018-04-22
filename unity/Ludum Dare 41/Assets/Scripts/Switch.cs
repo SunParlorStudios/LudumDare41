@@ -34,12 +34,15 @@ public class Switch : MonoBehaviour
   private bool playerInRange_;
   private TickingClock clock_;
   private float timeElapsed_ = 0;
+  private AudioSource audio_;
 
   void Start()
   {
     animator_ = GetComponent<Animator>();
     nextState_ = SwitchState.kRight;
     playerInRange_ = false;
+
+    audio_ = GetComponent<AudioSource>();
 
     SwitchTo(initialState, false);
 
@@ -106,6 +109,7 @@ public class Switch : MonoBehaviour
       SwitchEvent.Invoke(state_, newState);
     }
 
+    audio_.Play();
     state_ = newState;
     animator_.SetInteger("State", (int)newState);
 
