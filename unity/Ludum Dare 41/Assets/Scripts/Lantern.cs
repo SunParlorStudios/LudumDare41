@@ -9,6 +9,7 @@ public class Lantern : MonoBehaviour
   public Color flameColor;
 
   public LightFlare flare;
+  public Light pointLight;
   public ParticleSystem embers;
   public ParticleSystem flame;
   
@@ -26,6 +27,7 @@ public class Lantern : MonoBehaviour
 
     main = flame.main;
     main.startColor = flameColor;
+    pointLight.color = flameColor;
   }
 
   void FixedUpdate()

@@ -360,6 +360,7 @@ MonoBehaviour:
   embersColor: {r: 0.3019608, g: 0.654902, b: 1, a: 1}
   flameColor: {r: 0.13333334, g: 0.47058824, b: 0.5372549, a: 1}
   flare: {fileID: 114554592392317408}
+  pointLight: {fileID: 108075387466560670}
   embers: {fileID: 198550997644133860}
   flame: {fileID: 198318165860427812}
 --- !u!198 &198318165860427812
