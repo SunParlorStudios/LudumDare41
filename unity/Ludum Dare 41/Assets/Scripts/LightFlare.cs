@@ -20,10 +20,16 @@ public class LightFlare : MonoBehaviour
   private void Start()
   {
     material_ = GetComponent<MeshRenderer>().material;
-    startColor_ = material_.GetColor("_TintColor");
+    OverrideColor(material_.GetColor("_TintColor"));
+  }
+
+  public void OverrideColor(Color color)
+  {
+    startColor_ = color;
     toColor_.a = 0.0f;
     startOpacity_ = startColor_.a;
   }
+
   void Update()
   {
     transform.LookAt(Camera.main.transform);
