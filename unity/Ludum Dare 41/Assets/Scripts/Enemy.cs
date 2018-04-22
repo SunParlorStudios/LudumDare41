@@ -7,7 +7,8 @@ public class Enemy : MonoBehaviour
   public enum State
   {
     kHovering,
-    kAttacking
+    kAttacking,
+    kResetting
   };
 
   public float aggroRange;
@@ -52,7 +53,9 @@ public class Enemy : MonoBehaviour
 
     Vector2 d = p2 - p1;
 
-    if (Physics2D.Raycast(p1, d.normalized, aggroRange) == false)
+    float distance = Mathf.Min(d.magnitude, aggroRange);
+
+    if (Physics2D.Raycast(p1, d.normalized, distance) == false)
     {
       if (d.magnitude <= aggroRange)
       {
@@ -61,6 +64,22 @@ public class Enemy : MonoBehaviour
     }
 
     return false;
+  }
+
+  private void Reset()
+  {
+    transform.position = Vector3.Lerp(transform.position, current_, attackStepSize);
+    Vector3 d = current_ - transform.position;
+
+    if (d.magnitude < 0.1f)
+    {
+      state_ = State.kHovering;
+      return;
+    }
+
+    SetAngle(d);
+
+    state_ = ShouldAttack() == true ? State.kAttacking : State.kResetting;
   }
 
   private void Hover()
@@ -81,6 +100,12 @@ public class Enemy : MonoBehaviour
 
   private void Attack()
   {
+    if (ShouldAttack() == false)
+    {
+      state_ = State.kResetting;
+      return;
+    }
+
     Vector3 p2 = target_.transform.position + offset;
     transform.position = Vector3.Lerp(transform.position, p2, attackStepSize);
 
@@ -93,6 +118,11 @@ public class Enemy : MonoBehaviour
       current_ = transform.position;
     }
 
+    SetAngle(d);
+  }
+
+  private void SetAngle(Vector3 d)
+  {
     float angle = Mathf.Atan2(d.y, d.x);
 
     float sy = 1.0f;
@@ -101,11 +131,11 @@ public class Enemy : MonoBehaviour
       sy = -1.0f;
     }
 
+    transform.rotation = Quaternion.Euler(0.0f, 0.0f, angle * Mathf.Rad2Deg);
+
     Vector3 s = transform.localScale;
     s.y = sy;
     transform.localScale = s;
-
-    transform.rotation = Quaternion.Euler(0.0f, 0.0f, angle * Mathf.Rad2Deg);
   }
 
   public void Kill()
@@ -142,6 +172,10 @@ public class Enemy : MonoBehaviour
       {
         case State.kAttacking:
           Attack();
+          break;
+
+        case State.kResetting:
+          Reset();
           break;
 
         default:
