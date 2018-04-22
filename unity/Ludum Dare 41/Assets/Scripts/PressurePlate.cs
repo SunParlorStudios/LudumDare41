@@ -64,7 +64,7 @@ public class PressurePlate : MonoBehaviour
 
       if (PressurePlateEvent != null)
       {
-        PressurePlateEvent.Invoke(PressurePlateState.kUp, PressurePlateState.kDown);
+        PressurePlateEvent.Invoke(PressurePlateState.kDown, PressurePlateState.kUp);
       }
     }
   }
