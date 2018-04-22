@@ -16,6 +16,10 @@ public class Switch : MonoBehaviour
   public SwitchState initialState;
   public bool hasTristate = false;
 
+  public float maxTimeInRightState = -1;
+  public float maxTimeInLeftState = -1;
+  public float maxTimeInUpState = -1;
+
   public SwitchState state
   {
     get
@@ -28,6 +32,9 @@ public class Switch : MonoBehaviour
   private SwitchState state_;
   private SwitchState nextState_;
   private bool playerInRange_;
+  private TickingClock clock_;
+  private float timeElapsed_ = 0;
+  private AudioSource audio_;
 
   void Start()
   {
@@ -35,9 +42,13 @@ public class Switch : MonoBehaviour
     nextState_ = SwitchState.kRight;
     playerInRange_ = false;
 
+    audio_ = GetComponent<AudioSource>();
+
     SwitchTo(initialState, false);
 
     GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+
+    clock_ = GetComponentInChildren<TickingClock>();
 
     if (playerObject != null)
     {
@@ -48,11 +59,39 @@ public class Switch : MonoBehaviour
     {
       Debug.LogWarning("Couldn't find player object in the scene and therefore not the TypeWriter. Switches won't subscribe to any words in the TypeWriter now.");
     }
+
+    timeElapsed_ = 0;
   }
 
   void Update()
   {
-    
+    timeElapsed_ += Time.deltaTime;
+
+    float maxTime = -1;
+
+    switch (state_)
+    {
+      case SwitchState.kLeft:
+        maxTime = maxTimeInLeftState;
+        break;
+      case SwitchState.kRight:
+        maxTime = maxTimeInRightState;
+        break;
+      case SwitchState.kUp:
+        maxTime = maxTimeInUpState;
+        break;
+    }
+
+    if (maxTime != -1)
+    {
+      clock_.normalizedTimeLeft = (maxTime - timeElapsed_) / maxTime;
+
+      if (clock_.normalizedTimeLeft <= 0)
+      {
+        clock_.playing = false;
+        Toggle();
+      }
+    }
   }
   
   public void WordListener(string word)
@@ -70,8 +109,33 @@ public class Switch : MonoBehaviour
       SwitchEvent.Invoke(state_, newState);
     }
 
+    audio_.Play();
     state_ = newState;
     animator_.SetInteger("State", (int)newState);
+
+    switch(newState)
+    {
+      case SwitchState.kLeft:
+        if (maxTimeInLeftState != -1)
+        {
+          clock_.playing = true;
+        }
+        break;
+      case SwitchState.kRight:
+        if (maxTimeInRightState != -1)
+        {
+          clock_.playing = true;
+        }
+        break;
+      case SwitchState.kUp:
+        if (maxTimeInUpState != -1)
+        {
+          clock_.playing = true;
+        }
+        break;
+    }
+
+    timeElapsed_ = 0;
   }
 
   public void Toggle(bool notifyListeners = true)

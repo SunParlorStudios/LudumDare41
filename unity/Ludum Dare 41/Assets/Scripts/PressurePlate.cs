@@ -12,6 +12,10 @@ public class PressurePlate : MonoBehaviour
 {
   public delegate void PressurePlateListener(PressurePlateState oldState, PressurePlateState newState);
   public PressurePlateListener PressurePlateEvent;
+  public float timePressedAfterReleased = -1;
+
+  public AudioSource pressAudio;
+  public AudioSource releaseAudio;
 
   public PressurePlateState state
   {
@@ -23,21 +27,36 @@ public class PressurePlate : MonoBehaviour
 
   private int objectsOnTop_ = 0;
 
+  private TickingClock clock_;
+  private float timeElapsed_ = 0;
+
   void Start()
   {
     animator_ = GetComponent<Animator>();
+    clock_ = GetComponentInChildren<TickingClock>();
   }
 
   void Update()
   {
-    if (Input.GetKeyDown(KeyCode.Alpha0))
+    if (objectsOnTop_ == 0 && state_ == PressurePlateState.kDown)
     {
-      animator_.SetInteger("State", 0);
-    }
+      clock_.playing = true;
+      timeElapsed_ += Time.deltaTime;
 
-    if (Input.GetKeyDown(KeyCode.Alpha9))
+      if (timePressedAfterReleased != -1)
+      {
+        clock_.normalizedTimeLeft = (timePressedAfterReleased - timeElapsed_) / timePressedAfterReleased;
+
+        if (clock_.normalizedTimeLeft <= 0)
+        {
+          clock_.playing = false;
+          TryLift();
+        }
+      }
+    }
+    else
     {
-      animator_.SetInteger("State", 1);
+      timeElapsed_ = 0;
     }
   }
 
@@ -48,6 +67,8 @@ public class PressurePlate : MonoBehaviour
       state_ = PressurePlateState.kDown;
       animator_.SetInteger("State", (int)PressurePlateState.kDown);
 
+      pressAudio.Play();
+
       if (PressurePlateEvent != null)
       {
         PressurePlateEvent.Invoke(PressurePlateState.kUp, PressurePlateState.kDown);
@@ -57,14 +78,19 @@ public class PressurePlate : MonoBehaviour
 
   public void TryLift()
   {
-    if (objectsOnTop_ == 0)
+    if (timePressedAfterReleased == -1 || timeElapsed_ > timePressedAfterReleased)
     {
-      state_ = PressurePlateState.kUp;
-      animator_.SetInteger("State", (int)PressurePlateState.kUp);
-
-      if (PressurePlateEvent != null)
+      if (objectsOnTop_ == 0)
       {
-        PressurePlateEvent.Invoke(PressurePlateState.kDown, PressurePlateState.kUp);
+        state_ = PressurePlateState.kUp;
+        animator_.SetInteger("State", (int)PressurePlateState.kUp);
+
+        releaseAudio.Play();
+
+        if (PressurePlateEvent != null)
+        {
+          PressurePlateEvent.Invoke(PressurePlateState.kDown, PressurePlateState.kUp);
+        }
       }
     }
   }
