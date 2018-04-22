@@ -24,6 +24,14 @@ public class FollowCamera : MonoBehaviour
 
     Vector3 t = target.position + offset;
 
+    Rigidbody2D rb = null;
+    if ((rb = target.GetComponent<Rigidbody2D>()) != null)
+    {
+      Vector3 v = rb.velocity;
+      v.y = 0.0f;
+      t += v;
+    }
+
     transform.position = Vector3.Lerp(transform.position, t, stepSize);
   }
 }
