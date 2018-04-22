@@ -34,4 +34,14 @@ public class Lantern : MonoBehaviour
   {
     SetColors();
   }
+
+  void OnDrawGizmos()
+  {
+    if (flame == null || pointLight == null || embers == null || flame == null)
+    {
+      return;
+    }
+
+    SetColors();
+  }
 }
