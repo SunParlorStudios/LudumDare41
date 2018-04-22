@@ -127,7 +127,7 @@ public class Gate : MonoBehaviour
     switch (newState)
     {
       case SwitchState.kLeft:
-        TryClose();
+        TryClose(true);
         break;
       case SwitchState.kRight:
         TryOpen();
