@@ -1003,7 +1003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b5fe53df6b073346a79075d58fc2eb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timePressedAfterReleased: 5
+  timePressedAfterReleased: -1
 --- !u!114 &114856677970435218
 MonoBehaviour:
   m_ObjectHideFlags: 1

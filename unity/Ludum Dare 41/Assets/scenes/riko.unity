@@ -4170,12 +4170,12 @@ Prefab:
     - target: {fileID: 114036913997621824, guid: 78bf3d00f4b01ca41997d42c3781b38c,
         type: 2}
       propertyPath: initialState
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114036913997621824, guid: 78bf3d00f4b01ca41997d42c3781b38c,
         type: 2}
       propertyPath: triggerType
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1541965045640690, guid: 78bf3d00f4b01ca41997d42c3781b38c, type: 2}
       propertyPath: m_Name
