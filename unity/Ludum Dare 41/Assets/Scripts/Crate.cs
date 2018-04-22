@@ -64,6 +64,7 @@ public class Crate : MonoBehaviour
         rigidbody_.isKinematic = true;
         player_.pickupCollider.enabled = true;
         collider_.enabled = false;
+        transform.rotation = Quaternion.identity;
       }
     }
   }
