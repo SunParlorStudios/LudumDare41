@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 70fb4f769d13f7642bbff87c27ca6440
-timeCreated: 1524390832
+guid: f36a55f52de0e5a48b8e99fdf12c7335
+timeCreated: 1524391529
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -13,7 +13,12 @@ ModelImporter:
     3300000: //RootNode
     4300000: Box038
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ceiling1X2
+    second: {fileID: 2100002, guid: cefc6970447c814479881a892fe876e7, type: 3}
   materials:
     importMaterials: 1
     materialName: 0

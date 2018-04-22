@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 2906d3f8f7729b14aaa68f36010da635
-timeCreated: 1524390832
+guid: 315760261a5e6ce4b9ae9eeeef027a46
+timeCreated: 1524391528
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -13,7 +13,12 @@ ModelImporter:
     3300000: //RootNode
     4300000: Box031
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor1X2
+    second: {fileID: 2100002, guid: 93680c0b4a6e95e45846ab41ee4889df, type: 3}
   materials:
     importMaterials: 1
     materialName: 0

@@ -11,6 +11,24 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1357466207494426}
   m_IsPrefabParent: 1
+--- !u!1 &1080947191497750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4097922425282844}
+  - component: {fileID: 33311922188292666}
+  - component: {fileID: 23308326004645098}
+  - component: {fileID: 95279854492305722}
+  m_Layer: 0
+  m_Name: Floor1x2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1357466207494426
 GameObject:
   m_ObjectHideFlags: 0
@@ -26,37 +44,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1506487943351610
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4012268909448552}
-  - component: {fileID: 33260721547833054}
-  - component: {fileID: 23716113643797306}
-  - component: {fileID: 95053991901164986}
-  m_Layer: 0
-  m_Name: Floor
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4012268909448552
+--- !u!4 &4097922425282844
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1506487943351610}
+  m_GameObject: {fileID: 1080947191497750}
   m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: -0.5}
   m_LocalScale: {x: 0.616, y: 0.616, z: 0.616}
   m_Children: []
   m_Father: {fileID: 4390525953690644}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: -90, y: 90, z: 0}
 --- !u!4 &4390525953690644
 Transform:
   m_ObjectHideFlags: 1
@@ -64,19 +64,19 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1357466207494426}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8, y: -2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4012268909448552}
+  - {fileID: 4097922425282844}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23716113643797306
+--- !u!23 &23308326004645098
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1506487943351610}
+  m_GameObject: {fileID: 1080947191497750}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -85,8 +85,8 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 72a5c09e70393c840810c3f5a35f2784, type: 2}
-  - {fileID: 2100004, guid: 9d0f007c5c1dcb7419baeab8209a8539, type: 3}
+  - {fileID: 2100000, guid: 93ae9014389fd7248832d495071f2e8c, type: 2}
+  - {fileID: 2100002, guid: 93680c0b4a6e95e45846ab41ee4889df, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -106,22 +106,22 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33260721547833054
+--- !u!33 &33311922188292666
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1506487943351610}
-  m_Mesh: {fileID: 4300000, guid: 158cf645bed93714baea68139d2abaa8, type: 3}
---- !u!95 &95053991901164986
+  m_GameObject: {fileID: 1080947191497750}
+  m_Mesh: {fileID: 4300000, guid: 5462400fca8324d4ebba0d0e75cca086, type: 3}
+--- !u!95 &95279854492305722
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1506487943351610}
+  m_GameObject: {fileID: 1080947191497750}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 158cf645bed93714baea68139d2abaa8, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 5462400fca8324d4ebba0d0e75cca086, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
