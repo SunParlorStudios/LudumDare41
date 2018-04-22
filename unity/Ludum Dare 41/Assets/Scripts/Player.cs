@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
   public bool isCarrying;
   public float pickupDistance = 2.0f;
   public BoxCollider2D pickupCollider;
+  public Vector2 pickupThrowForce;
 
   private Direction direction_;
   private Rigidbody2D rigidBody_;

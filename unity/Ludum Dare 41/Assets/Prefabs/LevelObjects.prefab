@@ -555,7 +555,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1251649743017748}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.02, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4137308112708288}
@@ -1086,6 +1086,7 @@ MonoBehaviour:
   isCarrying: 0
   pickupDistance: 1.4
   pickupCollider: {fileID: 61223422023289850}
+  pickupThrowForce: {x: 200, y: 200}
 --- !u!114 &114061478643875186
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1139,8 +1140,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   overviewPoints:
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   pointToPointDuration: 1

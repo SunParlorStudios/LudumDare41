@@ -24,6 +24,7 @@ public class Crate : MonoBehaviour
 
       TypeWriter typeWriter = playerObject.GetComponent<TypeWriter>();
       typeWriter.RegisterWord("use", WordListener);
+      typeWriter.RegisterWord("throw", WordListener);
     }
     else
     {
@@ -41,13 +42,24 @@ public class Crate : MonoBehaviour
 
   void WordListener(string word)
   {
-    if (!isCarried_)
+    switch (word)
     {
-      TryPickup();
-    }
-    else
-    {
-      Drop();
+      case "use":
+        if (!isCarried_)
+        {
+          TryPickup();
+        }
+        else
+        {
+          Drop();
+        }
+        break;
+      case "throw":
+        if (isCarried_)
+        {
+          TryThrow();
+        }
+        break;
     }
   }
 
@@ -76,5 +88,25 @@ public class Crate : MonoBehaviour
     rigidbody_.isKinematic = false;
     player_.pickupCollider.enabled = false;
     collider_.enabled = true;
+  }
+
+  void TryThrow()
+  {
+    Drop();
+
+    int direction = 0;
+
+    if (player_.transform.position.x < transform.position.x)
+    {
+      direction = 1;
+    }
+    else
+    {
+      direction = -1;
+    }
+
+    Vector3 force = new Vector3(player_.pickupThrowForce.x * direction, player_.pickupThrowForce.y);
+
+    rigidbody_.AddForceAtPosition(force, transform.position + (Vector3.left * direction * 0.2f), ForceMode2D.Impulse);
   }
 }
