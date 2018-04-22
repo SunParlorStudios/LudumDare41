@@ -53,54 +53,10 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_Color.r
-    path: LanternBg/Point light
-    classID: 108
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0.8
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.083333336
-        value: 0.8
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Color.g
-    path: LanternBg/Point light
-    classID: 108
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.083333336
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Color.b
-    path: LanternBg/Point light
-    classID: 108
-    script: {fileID: 0}
+    attribute: embersColor.r
+    path: LanternBg
+    classID: 114
+    script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -119,54 +75,10 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_Color.a
-    path: LanternBg/Point light
-    classID: 108
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.083333336
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: material._TintColor.r
-    path: LanternBg/FlareBillboard
-    classID: 23
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0.8
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.083333336
-        value: 0.8
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: material._TintColor.g
-    path: LanternBg/FlareBillboard
-    classID: 23
-    script: {fileID: 0}
+    attribute: embersColor.g
+    path: LanternBg
+    classID: 114
+    script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -185,10 +97,186 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: material._TintColor.b
-    path: LanternBg/FlareBillboard
-    classID: 23
-    script: {fileID: 0}
+    attribute: embersColor.b
+    path: LanternBg
+    classID: 114
+    script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.083333336
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: embersColor.a
+    path: LanternBg
+    classID: 114
+    script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.083333336
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: flameColor.r
+    path: LanternBg
+    classID: 114
+    script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.083333336
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: flameColor.g
+    path: LanternBg
+    classID: 114
+    script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.083333336
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: flameColor.b
+    path: LanternBg
+    classID: 114
+    script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.083333336
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: flameColor.a
+    path: LanternBg
+    classID: 114
+    script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.083333336
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: flareColor.r
+    path: LanternBg
+    classID: 114
+    script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.083333336
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: flareColor.g
+    path: LanternBg
+    classID: 114
+    script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.083333336
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: flareColor.b
+    path: LanternBg
+    classID: 114
+    script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -207,10 +295,10 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: material._TintColor.a
-    path: LanternBg/FlareBillboard
-    classID: 23
-    script: {fileID: 0}
+    attribute: flareColor.a
+    path: LanternBg
+    classID: 114
+    script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
   m_PPtrCurves: []
   m_SampleRate: 60
   m_WrapMode: 0
@@ -227,60 +315,88 @@ AnimationClip:
       customType: 4
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3821930494
-      attribute: 2526845255
-      script: {fileID: 0}
-      typeID: 108
-      customType: 25
+      path: 1256231819
+      attribute: 941020596
+      script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
+      typeID: 114
+      customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3821930494
-      attribute: 4215373228
-      script: {fileID: 0}
-      typeID: 108
-      customType: 25
+      path: 1256231819
+      attribute: 1439379807
+      script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
+      typeID: 114
+      customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3821930494
-      attribute: 2334886179
-      script: {fileID: 0}
-      typeID: 108
-      customType: 25
+      path: 1256231819
+      attribute: 631358928
+      script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
+      typeID: 114
+      customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3821930494
-      attribute: 304273561
-      script: {fileID: 0}
-      typeID: 108
-      customType: 25
+      path: 1256231819
+      attribute: 3165164650
+      script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
+      typeID: 114
+      customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3947987028
-      attribute: 1090582214
-      script: {fileID: 0}
-      typeID: 23
-      customType: 22
+      path: 1256231819
+      attribute: 3167331946
+      script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
+      typeID: 114
+      customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3947987028
-      attribute: 1359017670
-      script: {fileID: 0}
-      typeID: 23
-      customType: 22
+      path: 1256231819
+      attribute: 3507765889
+      script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
+      typeID: 114
+      customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3947987028
-      attribute: 1627453126
-      script: {fileID: 0}
-      typeID: 23
-      customType: 22
+      path: 1256231819
+      attribute: 2709435918
+      script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
+      typeID: 114
+      customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3947987028
-      attribute: 1895888582
-      script: {fileID: 0}
-      typeID: 23
-      customType: 22
+      path: 1256231819
+      attribute: 947382196
+      script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
+      typeID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 1256231819
+      attribute: 3484429258
+      script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
+      typeID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 1256231819
+      attribute: 2725105441
+      script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
+      typeID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 1256231819
+      attribute: 3523689390
+      script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
+      typeID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 1256231819
+      attribute: 1259235860
+      script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
+      typeID: 114
+      customType: 0
       isPPtrCurve: 0
     pptrCurveMapping: []
   m_AnimationClipSettings:
@@ -388,54 +504,10 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_Color.r
-    path: LanternBg/Point light
-    classID: 108
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0.8
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.083333336
-        value: 0.8
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Color.g
-    path: LanternBg/Point light
-    classID: 108
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.083333336
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Color.b
-    path: LanternBg/Point light
-    classID: 108
-    script: {fileID: 0}
+    attribute: embersColor.r
+    path: LanternBg
+    classID: 114
+    script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -454,54 +526,10 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_Color.a
-    path: LanternBg/Point light
-    classID: 108
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.083333336
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: material._TintColor.r
-    path: LanternBg/FlareBillboard
-    classID: 23
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0.8
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.083333336
-        value: 0.8
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: material._TintColor.g
-    path: LanternBg/FlareBillboard
-    classID: 23
-    script: {fileID: 0}
+    attribute: embersColor.g
+    path: LanternBg
+    classID: 114
+    script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -520,10 +548,186 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: material._TintColor.b
-    path: LanternBg/FlareBillboard
-    classID: 23
-    script: {fileID: 0}
+    attribute: embersColor.b
+    path: LanternBg
+    classID: 114
+    script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.083333336
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: embersColor.a
+    path: LanternBg
+    classID: 114
+    script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.083333336
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: flameColor.r
+    path: LanternBg
+    classID: 114
+    script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.083333336
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: flameColor.g
+    path: LanternBg
+    classID: 114
+    script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.083333336
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: flameColor.b
+    path: LanternBg
+    classID: 114
+    script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.083333336
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: flameColor.a
+    path: LanternBg
+    classID: 114
+    script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.083333336
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: flareColor.r
+    path: LanternBg
+    classID: 114
+    script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.083333336
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: flareColor.g
+    path: LanternBg
+    classID: 114
+    script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.083333336
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: flareColor.b
+    path: LanternBg
+    classID: 114
+    script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -542,10 +746,10 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: material._TintColor.a
-    path: LanternBg/FlareBillboard
-    classID: 23
-    script: {fileID: 0}
+    attribute: flareColor.a
+    path: LanternBg
+    classID: 114
+    script: {fileID: 11500000, guid: d155e55eaef9e4743a0100c3771f44fb, type: 3}
   m_EulerEditorCurves:
   - curve:
       serializedVersion: 2
