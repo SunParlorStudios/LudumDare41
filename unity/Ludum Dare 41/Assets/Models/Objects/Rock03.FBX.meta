@@ -1,18 +1,16 @@
 fileFormatVersion: 2
-guid: 048d27304aa51674d9974c5d86c0c744
-timeCreated: 1524391528
+guid: 7243f4f50c6e8a941ad78f0bf0fae062
+timeCreated: 1524437620
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: No Name
-    2100002: RocksAndObjects
+    2100000: RocksAndObjects
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Box043
-    4300002: LanternOnAStick
+    4300000: Rock03
     9500000: //RootNode
   externalObjects: {}
   materials:
