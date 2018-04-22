@@ -14,6 +14,9 @@ public class PressurePlate : MonoBehaviour
   public PressurePlateListener PressurePlateEvent;
   public float timePressedAfterReleased = -1;
 
+  public AudioSource pressAudio;
+  public AudioSource releaseAudio;
+
   public PressurePlateState state
   {
     get { return state_; }
@@ -64,6 +67,8 @@ public class PressurePlate : MonoBehaviour
       state_ = PressurePlateState.kDown;
       animator_.SetInteger("State", (int)PressurePlateState.kDown);
 
+      pressAudio.Play();
+
       if (PressurePlateEvent != null)
       {
         PressurePlateEvent.Invoke(PressurePlateState.kUp, PressurePlateState.kDown);
@@ -79,6 +84,8 @@ public class PressurePlate : MonoBehaviour
       {
         state_ = PressurePlateState.kUp;
         animator_.SetInteger("State", (int)PressurePlateState.kUp);
+
+        releaseAudio.Play();
 
         if (PressurePlateEvent != null)
         {
