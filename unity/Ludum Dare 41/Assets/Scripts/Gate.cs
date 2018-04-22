@@ -29,10 +29,14 @@ public class Gate : MonoBehaviour
   private Animator animator_;
   private int numObjectsInTriggerZone_;
 
+  private AudioSource audio_;
+
 	void Start ()
   {
     animator_ = GetComponent<Animator>();
     numObjectsInTriggerZone_ = 0;
+
+    audio_ = GetComponent<AudioSource>();
 
     state_ = initialState;
     animator_.SetInteger("State", (int)state_);
@@ -77,6 +81,7 @@ public class Gate : MonoBehaviour
   void TryOpen()
   {
     animator_.SetInteger("State", (int)GateState.kOpened);
+    audio_.Play();
   }
 
   void TryClose(bool ignoreObjectsInTriggerZones = false)
@@ -87,6 +92,7 @@ public class Gate : MonoBehaviour
     }
 
     animator_.SetInteger("State", (int)GateState.kClosed);
+    audio_.Play();
   }
 
   void OnTriggerEnter2D(Collider2D collider)
