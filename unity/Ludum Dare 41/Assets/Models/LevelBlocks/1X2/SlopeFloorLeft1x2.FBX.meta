@@ -18,7 +18,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Floor1X2
-    second: {fileID: 2100002, guid: 93680c0b4a6e95e45846ab41ee4889df, type: 3}
+    second: {fileID: 2100000, guid: 809ed5018ad21c34787ea3e5a2b0fdb4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WallTexture
+    second: {fileID: 2100004, guid: 04e048a4f751ca54c96b0238a3c3ccd9, type: 3}
   materials:
     importMaterials: 1
     materialName: 0

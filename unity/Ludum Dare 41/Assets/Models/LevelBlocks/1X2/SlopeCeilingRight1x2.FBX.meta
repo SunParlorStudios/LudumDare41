@@ -15,6 +15,16 @@ ModelImporter:
     9500000: //RootNode
   externalObjects:
   - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ceiling1X2
+    second: {fileID: 2100000, guid: c4783c37cb4da19428360964b9e897f6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WallTexture
+    second: {fileID: 2100000, guid: 93ae9014389fd7248832d495071f2e8c, type: 2}
+  - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Ceiling1X2

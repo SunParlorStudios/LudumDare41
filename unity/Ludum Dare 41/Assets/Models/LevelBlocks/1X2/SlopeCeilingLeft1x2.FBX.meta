@@ -18,7 +18,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Ceiling1X2
-    second: {fileID: 2100002, guid: cefc6970447c814479881a892fe876e7, type: 3}
+    second: {fileID: 2100000, guid: c4783c37cb4da19428360964b9e897f6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WallTexture
+    second: {fileID: 2100000, guid: 93ae9014389fd7248832d495071f2e8c, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
