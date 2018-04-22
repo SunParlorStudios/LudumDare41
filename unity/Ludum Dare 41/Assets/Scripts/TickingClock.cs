@@ -14,7 +14,7 @@ public class TickingClock : MonoBehaviour
   public bool playing
   {
     get { return playing_; }
-    set { playing_ = value; if (value == true) DoTick(); }
+    set { if (value == true && playing_ != true) { DoTick(); } playing_ = value; }
   }
 
   private bool playing_;

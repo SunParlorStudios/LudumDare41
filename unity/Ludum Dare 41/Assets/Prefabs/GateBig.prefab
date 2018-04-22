@@ -194,6 +194,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialState: 0
-  triggerType: 2
+  triggerType: 0
   triggerSwitch: {fileID: 0}
   triggerPlate: {fileID: 0}
