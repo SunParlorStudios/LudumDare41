@@ -21,6 +21,7 @@ public class Menu : MonoBehaviour
     typeWriter_.RegisterWord("tutorial3", WordListener);
     typeWriter_.RegisterWord("tutorial4", WordListener);
     typeWriter_.RegisterWord("tutorial5", WordListener);
+    typeWriter_.RegisterWord("tutorial6", WordListener);
     typeWriter_.RegisterWord("level1", WordListener);
     typeWriter_.RegisterWord("level2", WordListener);
     typeWriter_.RegisterWord("level3", WordListener);
@@ -67,6 +68,9 @@ public class Menu : MonoBehaviour
         break;
       case "tutorial5":
         UnityEngine.SceneManagement.SceneManager.LoadScene("Tutorial05");
+        break;
+      case "tutorial6":
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Tutorial06");
         break;
       case "level1":
         UnityEngine.SceneManagement.SceneManager.LoadScene("Level01");
