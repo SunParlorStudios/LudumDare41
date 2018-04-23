@@ -38,6 +38,7 @@ public class Switch : MonoBehaviour
 
   void Start()
   {
+    clock_ = GetComponentInChildren<TickingClock>();
     animator_ = GetComponent<Animator>();
     nextState_ = SwitchState.kRight;
     playerInRange_ = false;
@@ -47,8 +48,6 @@ public class Switch : MonoBehaviour
     SwitchTo(initialState, false);
 
     GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-
-    clock_ = GetComponentInChildren<TickingClock>();
 
     if (playerObject != null)
     {
