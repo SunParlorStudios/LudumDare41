@@ -5671,12 +5671,17 @@ Prefab:
     - target: {fileID: 224516050486711026, guid: 05de31e9eb94299429c720a46a29807f,
         type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 224853153921576474, guid: 05de31e9eb94299429c720a46a29807f,
         type: 2}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 224516050486711026, guid: 05de31e9eb94299429c720a46a29807f,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05de31e9eb94299429c720a46a29807f, type: 2}
