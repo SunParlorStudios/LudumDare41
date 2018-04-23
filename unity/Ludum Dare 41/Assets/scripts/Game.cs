@@ -10,10 +10,32 @@ public enum GameState
   PostGame
 }
 
+public enum WinCondition
+{
+  kReachFinish,
+  kTimeLimit,
+  kKillAllEnemies,
+  kCollectAllEnemies
+}
+
 public class Game : MonoBehaviour
 {
   public Countdown countdown;
   public bool skipIntro = false;
+
+  public bool mustReachFinish = true;
+  public bool mustCompleteInTime = false;
+  public bool mustKillAll = false;
+  public bool mustCollectAll = false;
+
+  public float timeLimit = -1;
+
+  [HideInInspector]
+  public int numEnemiesAlive = 0;
+  [HideInInspector]
+  public int numCollectiblesAlive = 0;
+  [HideInInspector]
+  public bool reachedFinish = false;
   
   public GameState state
   {
@@ -22,7 +44,8 @@ public class Game : MonoBehaviour
       return state_;
     }
   }
-
+  
+  private float gameTime_ = 0.0f;
   private GameState state_;
   private FollowCamera followCamera_;
   private OverviewCamera overviewCamera_;
@@ -71,6 +94,23 @@ public class Game : MonoBehaviour
           countdown.Skip();
           followCamera_.enabled = true;
           typeWriter_.allowInput = true;
+          gameTime_ = 0.0f;
+        }
+        break;
+      case GameState.Game:
+        gameTime_ += Time.deltaTime;
+
+        if (HasFailedLevel())
+        {
+          // failed
+        }
+        else
+        {
+          if (HasMetWinConditions())
+          {
+            typeWriter_.allowInput = false;
+            state_ = GameState.PostGame;
+          }
         }
         break;
     }
@@ -84,17 +124,40 @@ public class Game : MonoBehaviour
     followCamera_.enabled = true;
 
     countdown.enabled = true;
+    gameTime_ = 0.0f;
   }
 
   void CountdownFinishedListener()
   {
     state_ = GameState.Game;
     typeWriter_.allowInput = true;
+    gameTime_ = 0.0f;
   }
 
-  public void CompleteLevel()
+  public bool HasMetWinConditions()
   {
-    state_ = GameState.PostGame;
-    typeWriter_.allowInput = false;
+    bool winConditionsMet = true;
+
+    if (mustCollectAll && numCollectiblesAlive > 0)
+    {
+      winConditionsMet = false;
+    }
+
+    if (mustKillAll && numEnemiesAlive > 0)
+    {
+      winConditionsMet = false;
+    }
+
+    if (mustReachFinish && !reachedFinish)
+    {
+      winConditionsMet = false;
+    }
+
+    return winConditionsMet;
+  }
+
+  public bool HasFailedLevel()
+  {
+    return mustCompleteInTime && gameTime_ > timeLimit;
   }
 }

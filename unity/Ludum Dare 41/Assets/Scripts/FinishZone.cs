@@ -23,12 +23,20 @@ public class FinishZone : MonoBehaviour
   {
     if (collider.tag == "Player")
     {
-      game_.CompleteLevel();
+      game_.reachedFinish = true;
 
-      if (particleEffect != null)
+      if (particleEffect != null && game_.HasMetWinConditions())
       {
         Instantiate(particleEffect, particleSpawnPoint);
       }
+    }
+  }
+
+  void OnTriggerExit2D(Collider2D collider)
+  {
+    if (collider.tag == "Player")
+    {
+      game_.reachedFinish = false;
     }
   }
 }

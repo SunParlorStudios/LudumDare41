@@ -39,6 +39,7 @@ public class Enemy : MonoBehaviour
   {
     current_ = transform.position;
     target_ = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+    game_.numEnemiesAlive++;
   }
 
   private bool ShouldAttack()
@@ -140,6 +141,7 @@ public class Enemy : MonoBehaviour
 
   public void Kill()
   {
+    game_.numEnemiesAlive--;
     Destroy(gameObject);
 
     if (explosionPrefab != null)
