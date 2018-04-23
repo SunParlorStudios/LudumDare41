@@ -60,6 +60,8 @@ public class Player : MonoBehaviour
   private bool prevGrounded_;
   private float baseHingePosition_;
 
+  private AudioSource[] audioSources_;
+
   void Awake()
   {
     game_ = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
@@ -73,6 +75,7 @@ public class Player : MonoBehaviour
     wobbleTimer_ = 0.0f;
     prevGrounded_ = false;
     baseHingePosition_ = 0.0f;
+    audioSources_ = GetComponents<AudioSource>();
   }
 
   void Start()
@@ -84,6 +87,8 @@ public class Player : MonoBehaviour
     typeWriter_.RegisterWord("kys", OnWord);
 
     startLocation_ = transform.position;
+
+    audioSources_[1].Play();
   }
 
   void Respawn()
@@ -217,6 +222,7 @@ public class Player : MonoBehaviour
     if (grounded == true && prevGrounded_ == false)
     {
       baseHingePosition_ = landHingeAngle;
+      audioSources_[3].Play();
     }
 
     ParticleSystem[] systems = GetComponentsInChildren<ParticleSystem>();
