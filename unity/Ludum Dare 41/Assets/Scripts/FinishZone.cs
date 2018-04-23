@@ -10,12 +10,14 @@ public class FinishZone : MonoBehaviour
   private Player player_;
   private Animator animator_;
   private bool playerGettingAnimated_ = false;
+  private FadeToBlack fadeToBlack_;
   
   void Start()
   {
     game_ = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
     player_ = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     animator_ = GetComponent<Animator>();
+    fadeToBlack_ = GameObject.FindGameObjectWithTag("FadeToBlack").GetComponent<FadeToBlack>();
   }
 
   void Update()
@@ -38,6 +40,8 @@ public class FinishZone : MonoBehaviour
         player_.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         playerGettingAnimated_ = true;
         animator_.SetTrigger("Finished");
+
+        fadeToBlack_.Fade(2.5f);
       }
     }
   }
