@@ -13,6 +13,11 @@ public class OnHitSound : MonoBehaviour
 
   void OnCollisionEnter2D(Collision2D collision)
   {
+    if (sources_ == null)
+    {
+      return;
+    }
+
     foreach (AudioSource s in sources_)
     {
       s.Play();
