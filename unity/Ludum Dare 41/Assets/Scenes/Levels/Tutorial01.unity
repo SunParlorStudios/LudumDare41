@@ -5668,6 +5668,16 @@ Prefab:
       propertyPath: overviewPoints.Array.data[0]
       value: 
       objectReference: {fileID: 1963167257}
+    - target: {fileID: 224516050486711026, guid: 05de31e9eb94299429c720a46a29807f,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 224853153921576474, guid: 05de31e9eb94299429c720a46a29807f,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05de31e9eb94299429c720a46a29807f, type: 2}
   m_IsPrefabParent: 0
@@ -19661,7 +19671,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 179734953}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
