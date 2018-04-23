@@ -19,7 +19,17 @@ ModelImporter:
     4300000: APCBody
     4300002: APCDoor
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: APC
+    second: {fileID: 2100000, guid: c2310075a082bed4dbb6bc9e6a0fce26, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: APC
+    second: {fileID: 2800000, guid: 7db63b5248f1f17489dd201c421249e1, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
