@@ -20,6 +20,8 @@ public enum WinCondition
 
 public class Game : MonoBehaviour
 {
+  public string nextSceneName = "Menu";
+
   public Countdown countdown;
   public bool skipIntro = false;
 
@@ -51,10 +53,13 @@ public class Game : MonoBehaviour
   private OverviewCamera overviewCamera_;
   private Player player_;
   private TypeWriter typeWriter_;
+  private FadeToBlack fadeToBlack_;
 
   void Awake()
   {
     GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
+
+    fadeToBlack_ = GameObject.FindGameObjectWithTag("FadeToBlack").GetComponent<FadeToBlack>();
 
     player_ = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     typeWriter_ = player_.GetComponent<TypeWriter>();
@@ -79,6 +84,11 @@ public class Game : MonoBehaviour
       countdown.enabled = false;
       typeWriter_.allowInput = true;
     }
+  }
+
+  void Start()
+  {
+    fadeToBlack_.Unfade(2.5f);
   }
 
   void Update()
@@ -108,7 +118,6 @@ public class Game : MonoBehaviour
         {
           if (HasMetWinConditions())
           {
-            typeWriter_.allowInput = false;
             state_ = GameState.PostGame;
           }
         }

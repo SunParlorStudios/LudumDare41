@@ -112,7 +112,7 @@ public class CantFinishReasonText : MonoBehaviour
     }
     else
     {
-      text_.text = "You've completed the level!\n\nType 'next' to go to the Next level\nType 'menu' to go to the menu\nType 'levelX' to go to a specific level";
+      text_.text = "You've completed the level!\n\nType 'next' to go to the Next level\nType 'menu' to go to the menu\nType a level name to go to a specific level";
     }
   }
 
