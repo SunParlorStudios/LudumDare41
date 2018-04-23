@@ -1,25 +1,23 @@
 fileFormatVersion: 2
-guid: 048d27304aa51674d9974c5d86c0c744
-timeCreated: 1524391528
+guid: 1e67d58be31803c42be6c0d0b93300c4
+timeCreated: 1524476875
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: No Name
-    2100002: RocksAndObjects
+    2100000: Bricks01
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Box043
-    4300002: LanternOnAStick
+    4300000: Brick04
     9500000: //RootNode
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: RocksAndObjects
-    second: {fileID: 2100000, guid: eaef53e02b302054bb897440ca4b37a0, type: 2}
+      name: Bricks01
+    second: {fileID: 2100000, guid: 98f9510696df41448a1e7f33550eece9, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

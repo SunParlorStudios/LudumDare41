@@ -8,18 +8,34 @@ ModelImporter:
     100000: Box040
     100002: Box041
     100004: //RootNode
+    100006: Lever
+    100008: Switch
     400000: Box040
     400002: Box041
     400004: //RootNode
+    400006: Lever
+    400008: Switch
     2100000: No Name
+    2100002: RocksAndObjects
     2300000: Box040
     2300002: Box041
+    2300004: Lever
+    2300006: Switch
     3300000: Box040
     3300002: Box041
+    3300004: Lever
+    3300006: Switch
     4300000: Box040
     4300002: Box041
+    4300004: Switch
+    4300006: Lever
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RocksAndObjects
+    second: {fileID: 2100000, guid: eaef53e02b302054bb897440ca4b37a0, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
