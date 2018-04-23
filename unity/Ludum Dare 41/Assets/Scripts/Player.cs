@@ -225,15 +225,20 @@ public class Player : MonoBehaviour
       audioSources_[3].Play();
     }
 
+    SetParticlesEnabled(grounded == true);
+
+    return grounded;
+  }
+
+  private void SetParticlesEnabled(bool enabled)
+  {
     ParticleSystem[] systems = GetComponentsInChildren<ParticleSystem>();
 
     foreach (ParticleSystem p in systems)
     {
       ParticleSystem.EmissionModule m = p.emission;
-      m.enabled = grounded;
+      m.enabled = enabled;
     }
-
-    return grounded;
   }
 
   private void Jump()
@@ -356,6 +361,8 @@ public class Player : MonoBehaviour
       enabled = false;
       SetVisible(false);
       Instantiate(deathPrefab, transform.position, Quaternion.identity, null);
+      SetParticlesEnabled(false);
+      audioSources_[1].Stop();
     }
   }
 }
