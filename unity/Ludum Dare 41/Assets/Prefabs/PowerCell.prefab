@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4467653718164100}
   - component: {fileID: 33390783122581186}
   - component: {fileID: 23743412409420064}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 95842411216716320}
   - component: {fileID: 58827991719825472}
   - component: {fileID: 82686746434080232}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PowerCell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4156170805928176}
   - component: {fileID: 108318789888682804}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 114955477682872606}
   - component: {fileID: 33151211999806136}
   - component: {fileID: 23550488109943778}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Flare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
