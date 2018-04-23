@@ -9,6 +9,7 @@ TagManager:
   - Crate
   - FadeToBlack
   - CantFinishTextUI
+  - Reminder
   layers:
   - Default
   - TransparentFX

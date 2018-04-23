@@ -60,11 +60,17 @@ public class Player : MonoBehaviour
   private bool prevGrounded_;
   private float baseHingePosition_;
 
+  private FadeToBlack fadeToBlack_;
+  private GameObject reminder_;
+
   private AudioSource[] audioSources_;
 
   void Awake()
   {
     game_ = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
+    fadeToBlack_ = GameObject.FindGameObjectWithTag("FadeToBlack").GetComponent<FadeToBlack>();
+    reminder_ = GameObject.FindGameObjectWithTag("Reminder");
+    reminder_.SetActive(false);
 
     direction_ = Direction.kRight;
     rigidBody_ = GetComponent<Rigidbody2D>();
@@ -87,6 +93,17 @@ public class Player : MonoBehaviour
     typeWriter_.RegisterWord("kys", OnWord);
     typeWriter_.RegisterWord("next", OnWord);
     typeWriter_.RegisterWord("menu", OnWord);
+    typeWriter_.RegisterWord("tutorial1", OnWord);
+    typeWriter_.RegisterWord("tutorial2", OnWord);
+    typeWriter_.RegisterWord("tutorial3", OnWord);
+    typeWriter_.RegisterWord("tutorial4", OnWord);
+    typeWriter_.RegisterWord("tutorial5", OnWord);
+    typeWriter_.RegisterWord("tutorial6", OnWord);
+    typeWriter_.RegisterWord("level1", OnWord);
+    typeWriter_.RegisterWord("level2", OnWord);
+    typeWriter_.RegisterWord("level3", OnWord);
+    typeWriter_.RegisterWord("level4", OnWord);
+    typeWriter_.RegisterWord("level5", OnWord);
 
     startLocation_ = transform.position;
 
@@ -133,6 +150,41 @@ public class Player : MonoBehaviour
 
       case "next":
         UnityEngine.SceneManagement.SceneManager.LoadScene(game_.nextSceneName);
+        break;
+
+
+      case "tutorial1":
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Tutorial01");
+        break;
+      case "tutorial2":
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Tutorial02");
+        break;
+      case "tutorial3":
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Tutorial03");
+        break;
+      case "tutorial4":
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Tutorial04");
+        break;
+      case "tutorial5":
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Tutorial05");
+        break;
+      case "tutorial6":
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Tutorial06");
+        break;
+      case "level1":
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level01");
+        break;
+      case "level2":
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level02");
+        break;
+      case "level3":
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level03");
+        break;
+      case "level4":
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level04");
+        break;
+      case "level5":
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level05");
         break;
 
       default:
@@ -373,6 +425,9 @@ public class Player : MonoBehaviour
       Instantiate(deathPrefab, transform.position, Quaternion.identity, null);
       SetParticlesEnabled(false);
       audioSources_[1].Stop();
+
+      fadeToBlack_.Fade(4.0f);
+      reminder_.SetActive(true);
     }
   }
 }
