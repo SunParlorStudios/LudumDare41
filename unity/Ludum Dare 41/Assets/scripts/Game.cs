@@ -20,6 +20,8 @@ public enum WinCondition
 
 public class Game : MonoBehaviour
 {
+  public string nextSceneName = "Menu";
+
   public Countdown countdown;
   public bool skipIntro = false;
 

@@ -85,6 +85,8 @@ public class Player : MonoBehaviour
     typeWriter_.RegisterWord("shoot", OnWord);
     typeWriter_.RegisterWord("reset", OnWord);
     typeWriter_.RegisterWord("kys", OnWord);
+    typeWriter_.RegisterWord("next", OnWord);
+    typeWriter_.RegisterWord("menu", OnWord);
 
     startLocation_ = transform.position;
 
@@ -123,6 +125,14 @@ public class Player : MonoBehaviour
 
       case "kys":
         Kill();
+        break;
+
+      case "menu":
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
+        break;
+
+      case "next":
+        UnityEngine.SceneManagement.SceneManager.LoadScene(game_.nextSceneName);
         break;
 
       default:
