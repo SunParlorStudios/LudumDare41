@@ -36,7 +36,9 @@ public class Game : MonoBehaviour
   public int numCollectiblesAlive = 0;
   [HideInInspector]
   public bool reachedFinish = false;
-  
+  [HideInInspector]
+  public float gameTime = 0.0f;
+
   public GameState state
   {
     get
@@ -44,8 +46,6 @@ public class Game : MonoBehaviour
       return state_;
     }
   }
-  
-  private float gameTime_ = 0.0f;
   private GameState state_;
   private FollowCamera followCamera_;
   private OverviewCamera overviewCamera_;
@@ -94,11 +94,11 @@ public class Game : MonoBehaviour
           countdown.Skip();
           followCamera_.enabled = true;
           typeWriter_.allowInput = true;
-          gameTime_ = 0.0f;
+          gameTime = 0.0f;
         }
         break;
       case GameState.Game:
-        gameTime_ += Time.deltaTime;
+        gameTime += Time.deltaTime;
 
         if (HasFailedLevel())
         {
@@ -124,14 +124,14 @@ public class Game : MonoBehaviour
     followCamera_.enabled = true;
 
     countdown.enabled = true;
-    gameTime_ = 0.0f;
+    gameTime = 0.0f;
   }
 
   void CountdownFinishedListener()
   {
     state_ = GameState.Game;
     typeWriter_.allowInput = true;
-    gameTime_ = 0.0f;
+    gameTime = 0.0f;
   }
 
   public bool HasMetWinConditions()
@@ -158,6 +158,6 @@ public class Game : MonoBehaviour
 
   public bool HasFailedLevel()
   {
-    return mustCompleteInTime && gameTime_ > timeLimit;
+    return mustCompleteInTime && gameTime > timeLimit;
   }
 }
