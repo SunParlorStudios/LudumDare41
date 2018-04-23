@@ -118,7 +118,6 @@ public class Game : MonoBehaviour
         {
           if (HasMetWinConditions())
           {
-            typeWriter_.allowInput = false;
             state_ = GameState.PostGame;
           }
         }
