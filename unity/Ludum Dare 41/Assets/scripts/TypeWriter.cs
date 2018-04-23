@@ -24,11 +24,14 @@ public class TypeWriter : MonoBehaviour
 
   private string currentInput_;
   private Dictionary<string, WordListener> words_;
+  private AudioSource audio_;
 
   void Awake()
   {
     words_ = new Dictionary<string, WordListener>();
     currentInput_ = "";
+
+    audio_ = GetComponent<AudioSource>();
   }
 
   void Update()
@@ -37,6 +40,8 @@ public class TypeWriter : MonoBehaviour
     {
       foreach (char c in Input.inputString)
       {
+        audio_.Play();
+
         string preInput = currentInput_;
         if (c == '\b')
         {

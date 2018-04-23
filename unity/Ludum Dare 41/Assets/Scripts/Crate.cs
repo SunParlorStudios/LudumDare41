@@ -5,6 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Crate : MonoBehaviour
 {
+  public List<AudioClip> clips;
+
+  private AudioSource audio_;
+
   private Player player_;
 
   private bool isCarried_;
@@ -17,6 +21,7 @@ public class Crate : MonoBehaviour
 
     rigidbody_ = GetComponent<Rigidbody2D>();
     collider_ = GetComponent<BoxCollider2D>();
+    audio_ = GetComponent<AudioSource>();
 
     if (playerObject != null)
     {
@@ -108,5 +113,10 @@ public class Crate : MonoBehaviour
     Vector3 force = new Vector3(player_.pickupThrowForce.x * direction, player_.pickupThrowForce.y);
 
     rigidbody_.AddForceAtPosition(force, transform.position + (Vector3.left * direction * 0.2f), ForceMode2D.Impulse);
+  }
+
+  void OnCollisionEnter2D(Collision2D collision)
+  {
+    //audio_.Play();
   }
 }

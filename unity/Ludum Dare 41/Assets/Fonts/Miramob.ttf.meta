@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: ccd393275ae3dbe49bcf947b84bdd62a
+timeCreated: 1524496825
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Miramonte
+  fontNames:
+  - Miramonte
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 5df2949108c04624d935c525285737fd, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

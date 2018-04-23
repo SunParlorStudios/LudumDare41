@@ -10,9 +10,12 @@ public class WarpZone : MonoBehaviour
   private bool warpedTo_;
   private Player.Direction warpDirection_;
 
+  private AudioSource audio_;
+
   void Start()
   {
     warpedTo_ = false;
+    audio_ = GetComponent<AudioSource>();
   }
   
   void OnTriggerExit2D(Collider2D other)
@@ -54,6 +57,8 @@ public class WarpZone : MonoBehaviour
     connectedTo.warpDirection_ = direction;
 
     CreateParticle(go.transform.position);
+
+    audio_.Play();
   }
 
   void OnTriggerEnter2D(Collider2D other)
