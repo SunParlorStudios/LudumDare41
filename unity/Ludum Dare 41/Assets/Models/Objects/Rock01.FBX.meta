@@ -12,7 +12,17 @@ ModelImporter:
     3300000: //RootNode
     4300000: Rock1
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RocksAndObjects
+    second: {fileID: 2100000, guid: eaef53e02b302054bb897440ca4b37a0, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: RocksAndObjects01
+    second: {fileID: 2800000, guid: d03fc9ef957574c44966ed25019d7154, type: 3}
   materials:
     importMaterials: 1
     materialName: 0

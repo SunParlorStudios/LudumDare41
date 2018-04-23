@@ -12,7 +12,17 @@ ModelImporter:
     3300000: //RootNode
     4300000: Brick01
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bricks01
+    second: {fileID: 2100000, guid: 98f9510696df41448a1e7f33550eece9, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Bricks01
+    second: {fileID: 2800000, guid: d451764e4858c9447b97dd087e57a36e, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
