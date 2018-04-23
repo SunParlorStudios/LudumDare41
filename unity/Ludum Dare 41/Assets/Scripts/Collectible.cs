@@ -7,13 +7,11 @@ public class Collectible : MonoBehaviour
   private Game game_;
   private Animator animator_;
   private AudioSource audio_;
-  private MeshRenderer[] renderer_;
 
 	void Start ()
   {
     game_ = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
     audio_ = GetComponent<AudioSource>();
-    renderer_ = GetComponentsInChildren<MeshRenderer>();
     animator_ = GetComponent<Animator>();
 
     game_.numCollectiblesAlive++;
