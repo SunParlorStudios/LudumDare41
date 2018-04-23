@@ -42,6 +42,24 @@ public class Player : MonoBehaviour
     get { return alive_; }
   }
 
+  public float wobbleSpeed;
+  public Transform mainHinge;
+
+  public float topHingeAngle;
+  public float bottomHingeAngle;
+
+  public float fallHingeAngle;
+  public float landHingeAngle;
+
+  public float velocityFactor;
+
+  [Range(0.0f, 1.0f)]
+  public float hingeSmoothing;
+
+  private float wobbleTimer_;
+  private bool prevGrounded_;
+  private float baseHingePosition_;
+
   void Awake()
   {
     game_ = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
@@ -52,6 +70,9 @@ public class Player : MonoBehaviour
     lockedOn_ = null;
     alive_ = true;
     isCarrying = false;
+    wobbleTimer_ = 0.0f;
+    prevGrounded_ = false;
+    baseHingePosition_ = 0.0f;
   }
 
   void Start()
@@ -193,6 +214,19 @@ public class Player : MonoBehaviour
     Debug.DrawLine(transform.position, transform.position + Vector3.down * jumpCheckRay,
       grounded == true ? Color.green : Color.red);
 
+    if (grounded == true && prevGrounded_ == false)
+    {
+      baseHingePosition_ = landHingeAngle;
+    }
+
+    ParticleSystem[] systems = GetComponentsInChildren<ParticleSystem>();
+
+    foreach (ParticleSystem p in systems)
+    {
+      ParticleSystem.EmissionModule m = p.emission;
+      m.enabled = grounded;
+    }
+
     return grounded;
   }
 
@@ -255,6 +289,32 @@ public class Player : MonoBehaviour
       AddDirectionalForce();
       ClampVelocity();
     }
+
+    UpdateHinge();
+
+    prevGrounded_ = grounded_;
+  }
+
+  void UpdateHinge()
+  {
+    wobbleTimer_ += Time.fixedDeltaTime * wobbleSpeed;
+
+    while (wobbleTimer_ > Mathf.PI * 2.0f)
+    {
+      wobbleTimer_ -= Mathf.PI * 2.0f;
+    }
+
+    float r = (Mathf.Sin(wobbleTimer_) + 1.0f) * 0.5f;
+    float a = Mathf.Lerp(bottomHingeAngle, topHingeAngle, r);
+
+    if (rigidBody_.velocity.y < 0.0f)
+    {
+      float v = Mathf.Clamp(Mathf.Abs(rigidBody_.velocity.y) / velocityFactor, 0.0f, 1.0f);
+      a = Mathf.Lerp(a, fallHingeAngle, v);
+    }
+
+    baseHingePosition_ = Mathf.Lerp(baseHingePosition_, 0.0f, hingeSmoothing);
+    mainHinge.localRotation = Quaternion.Euler(0.0f, 0.0f, baseHingePosition_ + a);
   }
 
   void Update()
