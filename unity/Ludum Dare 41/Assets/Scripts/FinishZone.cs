@@ -11,6 +11,7 @@ public class FinishZone : MonoBehaviour
   private Animator animator_;
   private bool playerGettingAnimated_ = false;
   private FadeToBlack fadeToBlack_;
+  private CantFinishReasonText cantFinishReasonText_;
   
   void Start()
   {
@@ -18,6 +19,7 @@ public class FinishZone : MonoBehaviour
     player_ = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     animator_ = GetComponent<Animator>();
     fadeToBlack_ = GameObject.FindGameObjectWithTag("FadeToBlack").GetComponent<FadeToBlack>();
+    cantFinishReasonText_ = GameObject.FindGameObjectWithTag("CantFinishTextUI").GetComponent<CantFinishReasonText>();
   }
 
   void Update()
@@ -43,6 +45,8 @@ public class FinishZone : MonoBehaviour
 
         fadeToBlack_.Fade(2.5f);
       }
+      
+      cantFinishReasonText_.Fade(2.0f);
     }
   }
 
@@ -51,6 +55,8 @@ public class FinishZone : MonoBehaviour
     if (collider.tag == "Player")
     {
       game_.reachedFinish = false;
+
+      cantFinishReasonText_.Unfade(2.0f);
     }
   }
 }

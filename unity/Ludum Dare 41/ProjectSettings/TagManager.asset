@@ -8,6 +8,7 @@ TagManager:
   - FinishZone
   - Crate
   - FadeToBlack
+  - CantFinishTextUI
   layers:
   - Default
   - TransparentFX
