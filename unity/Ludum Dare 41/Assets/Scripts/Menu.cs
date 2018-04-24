@@ -25,8 +25,6 @@ public class Menu : MonoBehaviour
     typeWriter_.RegisterWord("level1", WordListener);
     typeWriter_.RegisterWord("level2", WordListener);
     typeWriter_.RegisterWord("level3", WordListener);
-    typeWriter_.RegisterWord("level4", WordListener);
-    typeWriter_.RegisterWord("level5", WordListener);
 
     fadeToBlack_ = GameObject.FindGameObjectWithTag("FadeToBlack").GetComponent<FadeToBlack>();
   }
@@ -80,12 +78,6 @@ public class Menu : MonoBehaviour
         break;
       case "level3":
         UnityEngine.SceneManagement.SceneManager.LoadScene("Level03");
-        break;
-      case "level4":
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Level04");
-        break;
-      case "level5":
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Level05");
         break;
     }
   }
