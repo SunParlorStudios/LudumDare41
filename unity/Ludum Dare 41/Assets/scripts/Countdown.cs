@@ -8,6 +8,7 @@ public class Countdown : MonoBehaviour
 {
   public delegate void CountdownFinishedListener();
   public CountdownFinishedListener CountdownFinishedEvent;
+  public GameObject skipReminder;
 
   private Text text_;
 
@@ -65,6 +66,7 @@ public class Countdown : MonoBehaviour
     {
       if (animationTime_ > animationDuration_)
       {
+        skipReminder.SetActive(false);
         if (CountdownFinishedEvent != null)
         {
           CountdownFinishedEvent.Invoke();
@@ -95,5 +97,6 @@ public class Countdown : MonoBehaviour
     text_.color = new Color(text_.color.r, text_.color.g, text_.color.b, 0.0f);
 
     enabled = false;
+    skipReminder.SetActive(false);
   }
 }

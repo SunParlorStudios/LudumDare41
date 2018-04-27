@@ -9,6 +9,7 @@ public class OverviewCamera : MonoBehaviour
   public List<Transform> overviewPoints;
   public float pointToPointDuration = 1.0f;
   public float cooldownDuration = 0.5f;
+  public GameObject skipReminder;
 
   public OverviewFinishedListener OverviewFinishedEvent;
 
@@ -110,6 +111,7 @@ public class OverviewCamera : MonoBehaviour
 
   public void Skip()
   {
+    skipReminder.SetActive(false);
     animationTime_ = 0.0f;
     currentPoint_ = 0;
     transform.position = originalPosition_;
